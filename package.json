@@ -23,6 +23,7 @@
     "react-webcam": "^5.2.4",
     "redux": "^4.1.0",
     "redux-thunk": "^2.3.0",
+    "seedrandom": "^2.4.4",
     "web-vitals": "^1.0.1"
   },
   "scripts": {
