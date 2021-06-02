@@ -16,17 +16,8 @@ function RealTimeObjectDetection() {
   // Main function
   const runCoco = async () => {
     // 3. TODO - Load network 
-    // e.g. const net = await cocossd.load();
-    // https://realtimemodel-kiwoong.s3.jp-tok.cloud-object-storage.appdomain.cloud/model.json
 
-    // 'https://tensorflow-realtimemodel-hskw.s3.jp-tok.cloud-object-storage.appdomain.cloud/model.json' -해성모델
-
-    // https://tensorflowjsrealtimemodel.s3.au-syd.cloud-object-storage.appdomain.cloud/model.json
-    //const net = await tf.loadGraphModel('https://tensorflowjsrealtimemodel.s3.au-syd.cloud-object-storage.appdomain.cloud/model.json')
-
-    //const net = await tf.loadGraphModel('https://tensorflow-realtimemodel-hskw.s3.jp-tok.cloud-object-storage.appdomain.cloud/model.json')
-
-    const net = await tf.loadGraphModel('https://tensorflowjsrealtimemodelsg.s3.jp-tok.cloud-object-storage.appdomain.cloud/model.json')
+    const net = await tf.loadGraphModel('https://tensorflow-realtimemodel-hskw.s3.jp-tok.cloud-object-storage.appdomain.cloud/model.json')
 
     //  Loop and detect hands
     setInterval(() => {

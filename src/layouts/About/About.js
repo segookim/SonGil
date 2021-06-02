@@ -1,23 +1,3 @@
-// import React from 'react';
-// import { Container, AppBar, Typography, Button, Grow, Grid } from '@material-ui/core';
-
-// const About = () => {
-//     return (
-//         <footer>
-//             <Container>
-//                 <div style={{textAlign:"center"}}>
-//                     <Typography>
-//                     안녕하세요
-//                     </Typography>
-//                     <Typography>
-//                     텐서플로우와 리엑트를 이용한 수어튜터웹앱입니다.
-//                     </Typography>
-//                 </div>
-//             </Container>
-//         </footer>
-//     )
-// }
-
 // export default About
 import React, { Component } from 'react';
 import '../../bootstrap.min.css';
