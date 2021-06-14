@@ -2,7 +2,7 @@ import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import About from './layouts/About/About';
 import Home from './layouts/Home';
-import Login from './layouts/Account/Login/Login';
+// import Login from './layouts/Account/Login/Login';
 import NotFound from './layouts/NotFound';
 import RealTimeObjectDetection from './songil/RealTimeObjectDetection';
 
