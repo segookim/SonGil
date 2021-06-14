@@ -10,6 +10,10 @@ import {
   Link
 } from '@material-ui/core';
 import MenuIcon from '@material-ui/icons/Menu';
+import HomeIcon from '@material-ui/icons/Home';
+import PlayCircleFilledWhiteIcon from '@material-ui/icons/PlayCircleFilledWhite';
+import InfoIcon from '@material-ui/icons/Info';
+import AccountBoxIcon from '@material-ui/icons/AccountBox';
 
 
 const DrawerComponent = () => {
@@ -39,24 +43,28 @@ const DrawerComponent = () => {
         onOpen={() => setOpenDrawer(true)}>
         <List>
           <ListItem divider button component={Link} href="/" onClick={() => setOpenDrawer(false)}>
+            <HomeIcon />
             <ListItemIcon >
               <ListItemText> Home</ListItemText>
             </ListItemIcon>
           </ListItem>
 
           <ListItem divider button component={Link} href="/RealTimeObjectDetection" onClick={() => setOpenDrawer(false)} >
+            <PlayCircleFilledWhiteIcon />
             <ListItemIcon >
               <ListItemText> Start</ListItemText>
             </ListItemIcon>
           </ListItem>
 
           <ListItem divider button component={Link} href="/About" onClick={() => setOpenDrawer(false)}>
+            <InfoIcon />
             <ListItemIcon>
               <ListItemText> About</ListItemText>
             </ListItemIcon>
           </ListItem>
 
           <ListItem divider button onClick={() => setOpenDrawer(false)}>
+            <AccountBoxIcon />
             <ListItemIcon>
               <ListItemText> Account</ListItemText>
             </ListItemIcon>

@@ -87,6 +87,7 @@ function RealTimeObjectDetection() {
           muted={true} 
           style={{
             position: "absolute",
+            marginTop: "10%",
             marginLeft: "auto",
             marginRight: "auto",
             left: 0,
@@ -102,6 +103,7 @@ function RealTimeObjectDetection() {
           ref={canvasRef}
           style={{
             position: "absolute",
+            marginTop: "10%",
             marginLeft: "auto",
             marginRight: "auto",
             left: 0,

@@ -33,7 +33,7 @@ const images = [
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    // margin: 'auto',
+    marginTop: '10%',
     display: 'flex',
     flexWrap: 'wrap',
     minWidth: 300,

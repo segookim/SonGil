@@ -16,41 +16,14 @@ import IconButton from "@material-ui/core/IconButton";
 import green from "@material-ui/core/colors/green";
 
 import DrawerComponent from './DrawerComponent/DrawerComponent';
-import { GiBookAura } from 'react-icons/gi';
-import { FiBookOpen } from 'react-icons/fi';
-import { RiMoneyPoundCircleLine } from 'react-icons/ri';
-import { BsFillPersonPlusFill, BsFillBrightnessHighFill } from 'react-icons/bs';
-import { VscAccount } from 'react-icons/vsc';
 
-import { ImHappy } from 'react-icons/im';
 
-// const useStyles = makeStyles(theme => ({
-//   logo: {
-//     fontSize: '1.9rem',
-//     [theme.breakpoints.down('md')]: {
-//       fontSize: '1.1rem',
-//     },
-//   },
-//   acount: {
-//     marginLeft: 'auto',
-//     '&:hover': {
-//       background: 'purple',
-//     },
-//   },
-//   tabsContainer: {
-//     marginLeft: 'auto',
-//   },
-//   iconLogo: {
-//     color: 'yellow',
-//     fontSize: '3rem',
-//   },
-//   icons: {
-//     fontSize: '1.4rem',
-//   },
-// }));
 const useStyles = makeStyles((theme) => ({
     menuButton: {
-      marginRight: theme.spacing(2)
+      marginRight: theme.spacing(2, 'auto')
+    },
+    loginButton:{
+      marginLeft: 'auto'
     },
     title: {
       flexGrow: 1
@@ -106,8 +79,20 @@ export const Navbar = () => {
             {/* <Typography variant="h6" className={classes.title}>
                 SonGil
             </Typography> */}
-            <IconButton href="/" color="inherit">SonGil</IconButton>
-            {/* <IconButton color="inherit">Login</IconButton> */}
+            <IconButton 
+              href="/" 
+              color="inherit"
+            >
+                SonGil
+            </IconButton>
+            <IconButton
+              edge="end" 
+              className={classes.loginButton} 
+              href="/Account" 
+              color="inherit"
+            >
+                Login
+            </IconButton>
         </Toolbar>
       </AppBar>
       {/* Menu */}
