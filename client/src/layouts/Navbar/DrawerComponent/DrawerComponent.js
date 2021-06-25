@@ -14,6 +14,7 @@ import HomeIcon from '@material-ui/icons/Home';
 import PlayCircleFilledWhiteIcon from '@material-ui/icons/PlayCircleFilledWhite';
 import InfoIcon from '@material-ui/icons/Info';
 import AccountBoxIcon from '@material-ui/icons/AccountBox';
+import MessageIcon from '@material-ui/icons/Message';
 
 
 const DrawerComponent = () => {
@@ -53,6 +54,13 @@ const DrawerComponent = () => {
             <PlayCircleFilledWhiteIcon />
             <ListItemIcon >
               <ListItemText> Start</ListItemText>
+            </ListItemIcon>
+          </ListItem>
+
+          <ListItem divider button component={Link} href="/STT" onClick={() => setOpenDrawer(false)}>
+            <MessageIcon />
+            <ListItemIcon>
+              <ListItemText> Sound To Text</ListItemText>
             </ListItemIcon>
           </ListItem>
 
