@@ -12,13 +12,30 @@ import {drawRect} from "./utilities";
 function RealTimeObjectDetection() {
   const webcamRef = useRef(null);
   const canvasRef = useRef(null);
-
+  let net;
+  const model_url ='https://tensorflow-realtimemodel-hskw.s3.jp-tok.cloud-object-storage.appdomain.cloud/model.json'
   // Main function
   const runCoco = async () => {
     // 3. TODO - Load network 
-
-    const net = await tf.loadGraphModel('https://tensorflow-realtimemodel-hskw.s3.jp-tok.cloud-object-storage.appdomain.cloud/model.json')
-
+    if (('indexedDB' in window)) {
+      try {
+        net = await tf.loadGraphModel('indexeddb://idb');
+      }
+      // If error here, assume that the object store doesn't exist and 
+      // the model currently isn't saved in IndexedDB.
+      catch (error) {
+        console.log('Not found in IndexedDB. Loading and saving...');
+        console.log(error);
+        net = await tf.loadGraphModel(model_url);
+        await net.save('indexeddb://idb');
+      }
+    }   
+    else {
+      console.warn('IndexedDB not supported.');
+      net = await tf.loadGraphModel(model_url);
+    } 
+   
+    console.count('detecting object');
     //  Loop and detect hands
     setInterval(() => {
       detect(net);
