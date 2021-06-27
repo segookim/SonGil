@@ -1,28 +1,17 @@
-import React, { Component } from 'react';
+import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter as Router } from 'react-router-dom';
 
 import App from './App';
 import './bootstrap.min.css';
-
-
-class Index extends Component {
-
-  render() {
-    return (
-      <Router>
-        <App />
-      </Router>
-    );
-  }
-
-}
-
-// ReactDOM.render(<Index />, document.getElementById('root'));
-
+import * as serviceWorkerRegistration from './serviceWorkerRegistration';
 ReactDOM.render(
   <React.StrictMode>
-    <Index />
+    <Router>
+        <App />
+    </Router>
   </React.StrictMode>,
   document.getElementById('root')
 );
+
+serviceWorkerRegistration.register();
