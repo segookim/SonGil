@@ -14,6 +14,7 @@ import Routes from './Routes';
 
 // import './App.css';
 import './bootstrap.min.css';
+import Footer from './layouts/Footer';
 
 class App extends Component {
 
@@ -38,19 +39,18 @@ class App extends Component {
   render() {
     return (
         <div className="App">
-          <Container>
-            <Navbar />
-          </Container>
+          <Navbar />
           <Container>
             <Routes />
           </Container>
+          <Footer />
         </div>
     );
   }
 }
 
 App.propTypes = {
-  updateAvailable: PropTypes.bool.isRequired,
+  // updateAvailable: PropTypes.bool.isRequired,
 };
 
 export default withRouter(App);

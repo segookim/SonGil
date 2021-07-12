@@ -16,10 +16,8 @@ import RealTimeObjectDetection from "../songil/RealTimeObjectDetection";
 const Home = ({children}) => {
     return(
         <>
-            <Navbar />
             <Start />
             <About />
-            <Footer />
         </>
     );
 }

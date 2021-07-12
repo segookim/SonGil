@@ -11,7 +11,7 @@ export default class Home extends Component {
   render() {
     return (
       <div className="About container" style={{
-                    position: "absolute",
+                    // position: "absolute",
                     marginTop: "10%",
                     marginLeft: "auto",
                     marginRight: "auto",
