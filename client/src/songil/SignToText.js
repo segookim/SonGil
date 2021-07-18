@@ -14,7 +14,7 @@ import {drawRect} from "./utilities";
  */
 
 
-function RealTimeObjectDetection() {
+function SignToText() {
   const webcamRef = useRef(null);
   const canvasRef = useRef(null);
   let net;
@@ -44,7 +44,7 @@ function RealTimeObjectDetection() {
     //  Loop and detect hands
     setInterval(() => {
       detect(net);
-    }, 16.7);
+    }, 100);
   };
 
   
@@ -82,19 +82,36 @@ function RealTimeObjectDetection() {
       const scores = await obj[4].array()
 
 
+
       // Draw mesh
-      const ctx = canvasRef.current.getContext("2d");
+      // getContext에서 해당 컨텍스트를 찾지 못하는 예외 처리
+      try{
+        const ctx = canvasRef.current.getContext("2d");
 
-      // 5. TODO - Update drawing utility
-      // drawSomething(obj, ctx)  
+        requestAnimationFrame(()=> {drawRect(boxes[0], classes[0], scores[0], 0.8, videoWidth, videoHeight, ctx)})
 
-      requestAnimationFrame(()=> {drawRect(boxes[0], classes[0], scores[0], 0.8, videoWidth, videoHeight, ctx)})
+        tf.dispose(img)
+        tf.dispose(resized)
+        tf.dispose(casted)
+        tf.dispose(expanded)
+        tf.dispose(obj)  
+      } catch (e) {
+        
+      }
 
-      tf.dispose(img)
-      tf.dispose(resized)
-      tf.dispose(casted)
-      tf.dispose(expanded)
-      tf.dispose(obj)
+      // // Draw mesh
+      // const ctx = canvasRef.current.getContext("2d");
+
+      // // 5. TODO - Update drawing utility
+      // // drawSomething(obj, ctx)  
+
+      // requestAnimationFrame(()=> {drawRect(boxes[0], classes[0], scores[0], 0.8, videoWidth, videoHeight, ctx)})
+
+      // tf.dispose(img)
+      // tf.dispose(resized)
+      // tf.dispose(casted)
+      // tf.dispose(expanded)
+      // tf.dispose(obj)
 
     }
   };
@@ -102,13 +119,19 @@ function RealTimeObjectDetection() {
   useEffect(()=>{runCoco()},[]);
 
   return (
-    <div>
+    <div
+      style={{
+        marginTop: "5%",
+        width: 640,
+        height: 480
+      }}
+    >
       <Webcam
       ref={webcamRef}
       muted={true} 
       style={{
         position: "absolute",
-        marginTop: "5%",
+        // marginTop: "5%",
         marginLeft: "auto",
         marginRight: "auto",
         left: 0,
@@ -124,7 +147,7 @@ function RealTimeObjectDetection() {
         ref={canvasRef}
         style={{
           position: "absolute",
-          marginTop: "5%",
+          // marginTop: "5%",
           marginLeft: "auto",
           marginRight: "auto",
           left: 0,
@@ -137,7 +160,44 @@ function RealTimeObjectDetection() {
       />
     </div>
   );
+
+  // return (
+  //   <div>
+  //     <Webcam
+  //     ref={webcamRef}
+  //     muted={true} 
+  //     style={{
+  //       position: "absolute",
+  //       marginTop: "5%",
+  //       marginLeft: "auto",
+  //       marginRight: "auto",
+  //       left: 0,
+  //       right: 0,
+  //       textAlign: "center",
+  //       zindex: 9,
+  //       width: 640,
+  //       height: 480,
+  //     }}
+  //     />
+
+  //     <canvas
+  //       ref={canvasRef}
+  //       style={{
+  //         position: "absolute",
+  //         marginTop: "5%",
+  //         marginLeft: "auto",
+  //         marginRight: "auto",
+  //         left: 0,
+  //         right: 0,
+  //         textAlign: "center",
+  //         zindex: 8,
+  //         width: 640,
+  //         height: 480,
+  //       }}
+  //     />
+  //   </div>
+  // );
 }
 
 
-export default RealTimeObjectDetection;
+export default SignToText;

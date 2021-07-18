@@ -19,7 +19,7 @@ import SpeechRecognition, { useSpeechRecognition } from 'react-speech-recognitio
  */
 
 
-function RealTimeObjectDetection() {
+function SoundToText() {
   //SoundToText
   const {
     transcript,
@@ -43,7 +43,7 @@ function RealTimeObjectDetection() {
   return (
     <div style={{
       color: "white",
-      marginTop:"10%",
+      marginTop:"5%",
     }}>
       <h2>음성번역</h2>
       <p>
@@ -63,4 +63,4 @@ function RealTimeObjectDetection() {
 }
 
 
-export default RealTimeObjectDetection;
+export default SoundToText;

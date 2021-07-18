@@ -1,197 +1,138 @@
-// Import dependencies
-import React, { useRef, useState, useEffect } from "react";
-import * as tf from "@tensorflow/tfjs";
-import Webcam from "react-webcam";
-import '../bootstrap.min.css';
-// import "./App.css";
-// 2. TODO - Import drawing utility here
-// e.g. import { drawRect } from "./utilities";
-import {drawRect} from "./utilities";
-import Button from '@material-ui/core/Button';
-import MicIcon from '@material-ui/icons/Mic';
-import PlayCircleFilledWhiteIcon from '@material-ui/icons/PlayCircleFilledWhite';
-import StopIcon from '@material-ui/icons/Stop';
-import RotateLeftIcon from '@material-ui/icons/RotateLeft';
+// // Import dependencies
+// import { ButtonGroup } from "@material-ui/core";
+// import React, { useRef, useState, useEffect } from "react";
+// import '../bootstrap.min.css';
+// // import "./App.css";
+// // 2. TODO - Import drawing utility here
+// // e.g. import { drawRect } from "./utilities";
 
-import SpeechRecognition, { useSpeechRecognition } from 'react-speech-recognition';
-
-/**
- * Class to handle the rendering of the Home page.
- * @extends React.Component
- */
+// /**
+//  * Class to handle the rendering of the Home page.
+//  * @extends React.Component
+//  */
 
 
-function RealTimeObjectDetection() {
-  const webcamRef = useRef(null);
-  const canvasRef = useRef(null);
-  let net;
-  const model_url ='https://tensorflow-realtimemodel-hskw.s3.jp-tok.cloud-object-storage.appdomain.cloud/model.json'
-  // Main function
-  const runCoco = async () => {
-    // 3. TODO - Load network 
-    if (('indexedDB' in window)) {
-      try {
-        net = await tf.loadGraphModel('indexeddb://idb');
-      }
-      // If error here, assume that the object store doesn't exist and 
-      // the model currently isn't saved in IndexedDB.
-      catch (error) {
-        console.log('Not found in IndexedDB. Loading and saving...');
-        console.log(error);
-        net = await tf.loadGraphModel(model_url);
-        await net.save('indexeddb://idb');
-      }
-    }   
-    else {
-      console.warn('IndexedDB not supported.');
-      net = await tf.loadGraphModel(model_url);
-    } 
-   
-    console.count('detecting object');
-    //  Loop and detect hands
-    setInterval(() => {
-      detect(net);
-    }, 16.7);
-  };
+// function RealTimeObjectDetection() {
 
   
-
-  const detect = async (net) => {
-    // Check data is available
-    if (
-      typeof webcamRef.current !== "undefined" &&
-      webcamRef.current !== null &&
-      webcamRef.current.video.readyState === 4
-    ) {
-      // Get Video Properties
-      const video = webcamRef.current.video;
-      const videoWidth = webcamRef.current.video.videoWidth;
-      const videoHeight = webcamRef.current.video.videoHeight;
-
-      // Set video width
-      webcamRef.current.video.width = videoWidth;
-      webcamRef.current.video.height = videoHeight;
-
-      // Set canvas height and width
-      canvasRef.current.width = videoWidth;
-      canvasRef.current.height = videoHeight;
-
-      // 4. TODO - Make Detections
-      const img = tf.browser.fromPixels(video)
-      const resized = tf.image.resizeBilinear(img, [640, 480])
-      const casted = resized.cast('int32')
-      const expanded = casted.expandDims(0)
-      const obj = await net.executeAsync(expanded)
-      console.log(obj)
-
-      const boxes = await obj[1].array()
-      const classes = await obj[2].array()
-      const scores = await obj[4].array()
+//   return (
+//     <div className="App">
+//       <header className="App-header">
+//         <div style={{
+//           color: "white",
+//           marginTop:"10%",
+//         }}>
+//           <ButtonGroup>
+//             <button></button>
+//           </ButtonGroup>
+//         </div>
+//       </header>
+//     </div>
+//   );
+// }
 
 
-      // Draw mesh
-      const ctx = canvasRef.current.getContext("2d");
+// export default RealTimeObjectDetection;
 
-      // 5. TODO - Update drawing utility
-      // drawSomething(obj, ctx)  
+import React from 'react';
+import PropTypes from 'prop-types';
+import { makeStyles } from '@material-ui/core/styles';
+import AppBar from '@material-ui/core/AppBar';
+import Tabs from '@material-ui/core/Tabs';
+import Tab from '@material-ui/core/Tab';
+import Typography from '@material-ui/core/Typography';
+import Box from '@material-ui/core/Box';
 
-      requestAnimationFrame(()=> {drawRect(boxes[0], classes[0], scores[0], 0.8, videoWidth, videoHeight, ctx)})
+import SignToText from './SignToText'
+import SoundToText from './SoundToText'
 
-      tf.dispose(img)
-      tf.dispose(resized)
-      tf.dispose(casted)
-      tf.dispose(expanded)
-      tf.dispose(obj)
-
-    }
-  };
-
-  useEffect(()=>{runCoco()},[]);
-
-  //SoundToText
-  const {
-    transcript,
-    listening,
-    resetTranscript,
-    browserSupportsSpeechRecognition
-  } = useSpeechRecognition();
-
-  if (!browserSupportsSpeechRecognition) {
-    return <span>Browser doesn't support speech recognition.</span>;
-  }
-
-  const startHandle = () => {
-    SpeechRecognition.startListening({language: 'ko', continuous: true})
-  };
-  
-  const stopHandle = () => {
-    SpeechRecognition.stopListening();
-  };
-  
-  
+function TabPanel(props) {
+  const { children, value, index, ...other } = props;
 
   return (
-    <div className="App">
-      <header className="App-header">
-        <div style={{
-          color: "white",
-          marginTop:"10%",
-        }}>
-          <h2>음성번역</h2>
-          <p>
-            <MicIcon/>
-            {listening ? 'on' : 'off'}
-          </p>
-          <Button variant="outlined" color="inherit" onClick={startHandle}><PlayCircleFilledWhiteIcon/></Button>
-          <Button style={{marginLeft: "1%"}} variant="outlined" color="inherit" onClick={stopHandle}><StopIcon/></Button>
-          <Button style={{marginLeft: "1%"}} variant="outlined" color="inherit" onClick={resetTranscript}><RotateLeftIcon/></Button>
-          <p style={{
-            marginTop: "5%"
-            }}>
-              번역: {transcript} 
-          </p>
-          <div
-            style={{
-              height: 480,
-              marginTop: "5%",
-            }}
-          >
-            <Webcam
-            ref={webcamRef}
-            muted={true} 
-            style={{
-              position: "absolute",
-              marginLeft: "auto",
-              marginRight: "auto",
-              left: 0,
-              right: 0,
-              textAlign: "center",
-              zindex: 9,
-              width: 640,
-              height: 480,
-            }}
-            />
+    <div
+      role="tabpanel"
+      hidden={value !== index}
+      id={`nav-tabpanel-${index}`}
+      aria-labelledby={`nav-tab-${index}`}
+      {...other}
+    >
+      {value === index && (
+        <Box p={3}>
+          <Typography>{children}</Typography>
+        </Box>
+      )}
+    </div>
+  );
+}
 
-            <canvas
-              ref={canvasRef}
-              style={{
-                position: "absolute",
-                marginLeft: "auto",
-                marginRight: "auto",
-                left: 0,
-                right: 0,
-                textAlign: "center",
-                zindex: 8,
-                width: 640,
-                height: 480,
-              }}
-            />
-          </div>
+TabPanel.propTypes = {
+  children: PropTypes.node,
+  index: PropTypes.any.isRequired,
+  value: PropTypes.any.isRequired,
+};
 
-        </div>
+function a11yProps(index) {
+  return {
+    id: `nav-tab-${index}`,
+    'aria-controls': `nav-tabpanel-${index}`,
+  };
+}
 
+function LinkTab(props) {
+  return (
+    <Tab
+      component="a"
+      onClick={(event) => {
+        event.preventDefault();
+      }}
+      {...props}
+    />
+  );
+}
+
+const useStyles = makeStyles((theme) => ({
+  root: {
+    flexGrow: 1,
+    // backgroundColor: theme.palette.background.paper,
+    backgroundColor: "#444444"
+  },
+}));
+
+function RealTimeObjectDetection() {
+  const classes = useStyles();
+  const [value, setValue] = React.useState(0);
+
+  const handleChange = (event, newValue) => {
+    setValue(newValue);
+  };
+
+  return (
+    <div className={classes.root}>
+      <AppBar
+        position="static"
+        style={{marginTop: "10%"}}
+      >
+        <Tabs
+          variant="fullWidth"
+          value={value}
+          onChange={handleChange}
+          aria-label="nav tabs example"
+        >
+          <LinkTab label="Motionless Sign To Text" {...a11yProps(0)} />
+          <LinkTab label="Sound To Text" {...a11yProps(1)} />
+          <LinkTab label="Motionless Sign To Text" disabled style={{color: "#000"}} {...a11yProps(2)} />
+        </Tabs>
+      </AppBar>
+      <TabPanel value={value} index={0}>
+        <SignToText/>
+      </TabPanel>
+      <TabPanel value={value} index={1}>
+        <SoundToText />
+      </TabPanel>
+      <TabPanel value={value} index={2}>
         
-      </header>
+      </TabPanel>
     </div>
   );
 }
