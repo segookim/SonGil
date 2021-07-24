@@ -81,8 +81,6 @@ function SignToText() {
       const classes = await obj[2].array()
       const scores = await obj[4].array()
 
-
-
       // Draw mesh
       // getContext에서 해당 컨텍스트를 찾지 못하는 예외 처리
       try{
@@ -98,21 +96,6 @@ function SignToText() {
       } catch (e) {
         
       }
-
-      // // Draw mesh
-      // const ctx = canvasRef.current.getContext("2d");
-
-      // // 5. TODO - Update drawing utility
-      // // drawSomething(obj, ctx)  
-
-      // requestAnimationFrame(()=> {drawRect(boxes[0], classes[0], scores[0], 0.8, videoWidth, videoHeight, ctx)})
-
-      // tf.dispose(img)
-      // tf.dispose(resized)
-      // tf.dispose(casted)
-      // tf.dispose(expanded)
-      // tf.dispose(obj)
-
     }
   };
 
@@ -161,42 +144,7 @@ function SignToText() {
     </div>
   );
 
-  // return (
-  //   <div>
-  //     <Webcam
-  //     ref={webcamRef}
-  //     muted={true} 
-  //     style={{
-  //       position: "absolute",
-  //       marginTop: "5%",
-  //       marginLeft: "auto",
-  //       marginRight: "auto",
-  //       left: 0,
-  //       right: 0,
-  //       textAlign: "center",
-  //       zindex: 9,
-  //       width: 640,
-  //       height: 480,
-  //     }}
-  //     />
 
-  //     <canvas
-  //       ref={canvasRef}
-  //       style={{
-  //         position: "absolute",
-  //         marginTop: "5%",
-  //         marginLeft: "auto",
-  //         marginRight: "auto",
-  //         left: 0,
-  //         right: 0,
-  //         textAlign: "center",
-  //         zindex: 8,
-  //         width: 640,
-  //         height: 480,
-  //       }}
-  //     />
-  //   </div>
-  // );
 }
 
 
