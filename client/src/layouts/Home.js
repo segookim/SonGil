@@ -1,8 +1,7 @@
-import Footer from './Footer';
 import About from './About/About';
 import Start from './Start/Start';
 // import Navbar from './Navbar/Navbar';
-import React, { useState } from "react";
+import React from "react";
 // import { makeStyles } from "@material-ui/core/styles";
 // import AppBar from "@material-ui/core/AppBar";
 // import Toolbar from "@material-ui/core/Toolbar";

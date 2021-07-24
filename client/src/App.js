@@ -10,7 +10,10 @@ import { PropTypes } from 'prop-types';
 // import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 import { Navbar } from  './layouts/Navbar/Navbar';
+// import { Footer } from  './layouts/Footer';
+import Footer from  './layouts/Footer';
 import Routes from './Routes';
+// import Navbar from '.'
 
 // import './App.css';
 import './bootstrap.min.css';
