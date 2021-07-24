@@ -1,6 +1,5 @@
 // Import dependencies
 import React from "react";
-import { Route, Switch } from 'react-router-dom';
 import '../bootstrap.min.css';
 // import "./App.css";
 // 2. TODO - Import drawing utility here

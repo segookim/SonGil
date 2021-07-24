@@ -1,7 +1,6 @@
-// export default About
 import React, { Component } from 'react';
 import '../../bootstrap.min.css';
-import { makeStyles } from '@material-ui/core/styles';
+// import { makeStyles } from '@material-ui/core/styles';
 /**
  * Class to handle the rendering of the Home page.
  * @extends React.Component

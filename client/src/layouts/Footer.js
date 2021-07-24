@@ -1,7 +1,7 @@
 import React from 'react';
-import { Container, AppBar, Typography, Button, Grow, Grid } from '@material-ui/core';
+import { Container } from '@material-ui/core';
 
-import { makeStyles } from '@material-ui/core/styles';
+// import { makeStyles } from '@material-ui/core/styles';
 
 const Footer = () => {
     return (
