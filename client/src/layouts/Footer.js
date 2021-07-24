@@ -8,8 +8,8 @@ const Footer = () => {
         <footer>
             <Container>
                 <div style={{
-                    position: "absolute",
-                    marginTop: "20%",
+                    // position: "absolute",
+                    marginTop: "10%",
                     marginLeft: "auto",
                     marginRight: "auto",
                     left: 0,

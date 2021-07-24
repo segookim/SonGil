@@ -66,7 +66,7 @@ export const Navbar = () => {
 
   return (
     <>
-      <AppBar elevation={0} color='primary'>
+      <AppBar elevation={0} color='primary' position="static">
         <Toolbar>
             <IconButton
                 edge="start"

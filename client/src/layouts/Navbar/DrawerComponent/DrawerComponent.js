@@ -56,14 +56,6 @@ const DrawerComponent = () => {
               <ListItemText> Start</ListItemText>
             </ListItemIcon>
           </ListItem>
-
-          <ListItem divider button component={Link} href="/STT" onClick={() => setOpenDrawer(false)}>
-            <MessageIcon />
-            <ListItemIcon>
-              <ListItemText> Sound To Text</ListItemText>
-            </ListItemIcon>
-          </ListItem>
-
           <ListItem divider button component={Link} href="/About" onClick={() => setOpenDrawer(false)}>
             <InfoIcon />
             <ListItemIcon>
