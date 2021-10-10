@@ -20,8 +20,8 @@ function SignToText({setTransText}) {
   const transRef = useRef(null);
 
   let net;
-  // const model_url ='https://tensorflow-realtimemodel-hskw.s3.jp-tok.cloud-object-storage.appdomain.cloud/model.json'
-  const model_url = "https://tensorflow-realtimemodel-30-batch20.s3.jp-tok.cloud-object-storage.appdomain.cloud/model.json"
+  const model_url ='https://tensorflow-realtimemodel-hskw.s3.jp-tok.cloud-object-storage.appdomain.cloud/model.json'
+  // const model_url = "https://tensorflow-realtimemodel-30-batch20.s3.jp-tok.cloud-object-storage.appdomain.cloud/model.json"
   // Main function
   const runCoco = async () => {
     // 3. TODO - Load network 
