@@ -30,15 +30,6 @@ const SoundToText = () => {
   };
 
   return (
-    // <div className="About container" style={{
-    //   position: "absolute",
-    //   marginTop: "10%",
-    //   marginLeft: "auto",
-    //   marginRight: "auto",
-    //   left: 0,
-    //   right: 0,
-    //   textAlign: "center",
-    // }}>
     <div style={{
       marginTop:"10%"
     }}>

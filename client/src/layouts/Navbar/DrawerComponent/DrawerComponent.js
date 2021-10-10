@@ -13,8 +13,6 @@ import MenuIcon from '@material-ui/icons/Menu';
 import HomeIcon from '@material-ui/icons/Home';
 import PlayCircleFilledWhiteIcon from '@material-ui/icons/PlayCircleFilledWhite';
 import InfoIcon from '@material-ui/icons/Info';
-import AccountBoxIcon from '@material-ui/icons/AccountBox';
-import MessageIcon from '@material-ui/icons/Message';
 
 
 const DrawerComponent = () => {
