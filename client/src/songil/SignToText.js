@@ -20,8 +20,8 @@ function SignToText({setTransText}) {
   const transRef = useRef(null);
 
   let net;
-  const model_url ='https://tensorflow-realtimemodel-hskw.s3.jp-tok.cloud-object-storage.appdomain.cloud/model.json'
-  // const model_url = "https://tensorflow-realtimemodel-30-batch20.s3.jp-tok.cloud-object-storage.appdomain.cloud/model.json"
+  // const model_url ='https://tensorflow-realtimemodel-hskw.s3.jp-tok.cloud-object-storage.appdomain.cloud/model.json'
+  const model_url = "https://tensorflow-realtimemodel-30-batch20.s3.jp-tok.cloud-object-storage.appdomain.cloud/model.json"
   // Main function
   const runCoco = async () => {
     // 3. TODO - Load network 
@@ -87,19 +87,19 @@ function SignToText({setTransText}) {
       // Draw mesh
       // getContext에서 해당 컨텍스트를 찾지 못하는 예외 처리
       try{
-        // const ctx = canvasRef.current.getContext("2d");
+        const ctx = canvasRef.current.getContext("2d");
 
-        // const transText = document.getElementById("tranText");
+        const transText = document.getElementById("tranText");
 
         setTransText(getText(classes[0], scores[0], 0.8));
 
-        // requestAnimationFrame(()=> {drawRect(boxes[0], classes[0], scores[0], 0.8, videoWidth, videoHeight, ctx)})
+        requestAnimationFrame(()=> {drawRect(boxes[0], classes[0], scores[0], 0.8, videoWidth, videoHeight, ctx)})
 
-        // tf.dispose(img)
-        // tf.dispose(resized)
-        // tf.dispose(casted)
-        // tf.dispose(expanded)
-        // tf.dispose(obj)  
+        tf.dispose(img)
+        tf.dispose(resized)
+        tf.dispose(casted)
+        tf.dispose(expanded)
+        tf.dispose(obj)  
       } catch (e) {
         
       }
