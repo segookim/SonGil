@@ -118,23 +118,6 @@ function RealTimeObjectDetection() {
       <TabPanel value={value} index={2}>
         
       </TabPanel>
-
-      <div id="trans">
-        <button
-          onClick={()=>example()}
-        >
-          초기화
-        </button>
-        <div style={{color: "#FFFFFF", margin: "10px"}}>
-          {/* {transText} */}
-        </div>
-        <div>
-          {textList.map(text => (
-            <div> {text} </div>
-          ))}
-          
-        </div>
-      </div>
     </div>
   );
 }

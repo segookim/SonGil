@@ -1,5 +1,5 @@
 // Import dependencies
-import React, { useRef, useEffect } from "react";
+import React, { useRef,useState, useEffect } from "react";
 import * as tf from "@tensorflow/tfjs";
 import Webcam from "react-webcam";
 import '../bootstrap.min.css';
@@ -17,7 +17,9 @@ import {drawRect, getText} from "./utilities";
 function SignToText({setTransText}) {
   const webcamRef = useRef(null);
   const canvasRef = useRef(null);
-  const transRef = useRef(null);
+  //const transRef = useRef(null);
+
+  const [Caption,setCaption] = useState([]);
 
   let net;
   // const model_url ='https://tensorflow-realtimemodel-hskw.s3.jp-tok.cloud-object-storage.appdomain.cloud/model.json'
@@ -47,7 +49,7 @@ function SignToText({setTransText}) {
     //  Loop and detect hands
     setInterval(() => {
       detect(net);
-    }, 1000);
+    }, 500);
   };
 
   
@@ -89,28 +91,19 @@ function SignToText({setTransText}) {
       try{
         const ctx = canvasRef.current.getContext("2d");
 
-        const transText = document.getElementById("tranText");
+        setCaption(Caption => [...Caption, getText(classes[0], scores[0], 0.8)]);
 
-        setTransText(getText(classes[0], scores[0], 0.8));
+        //requestAnimationFrame(()=> {drawRect(boxes[0], classes[0], scores[0], 0.8, videoWidth, videoHeight, ctx)})
+      } catch(error){
+        console.log(error)
 
-        requestAnimationFrame(()=> {drawRect(boxes[0], classes[0], scores[0], 0.8, videoWidth, videoHeight, ctx)})
-
+      }
         tf.dispose(img)
         tf.dispose(resized)
         tf.dispose(casted)
         tf.dispose(expanded)
         tf.dispose(obj)  
-      } catch (e) {
-        
-      }
 
-      // try{
-      //   const trans = transRef.current.getContext("2d");
-      
-      //   console.log(requestAnimationFrame(()=> {drawRect(classes[0], scores[0], 0.8, videoWidth, videoHeight, trans)}))
-      // } catch (e){
-
-      // }
     }
   };
 
@@ -119,62 +112,77 @@ function SignToText({setTransText}) {
   return (
     <div
       style={{
-        marginTop: "5%",
-        width: 640,
-        height: 480
+        //marginTop: "5%",
+        width: 1280,
+        height: 600,
       }}
     >
-      <Webcam
-      ref={webcamRef}
-      muted={true} 
-      style={{
-        position: "absolute",
-        // marginTop: "5%",
-        marginLeft: "auto",
-        marginRight: "auto",
-        left: 0,
-        right: 0,
-        textAlign: "center",
-        zindex: 9,
-        width: 640,
-        height: 480,
-      }}
-      />
-
-      <canvas
-        ref={canvasRef}
+      <div style={{
+            width: 640,
+            height: 480,
+            //display:"blo",
+        }}>
+        <Webcam
+        ref={webcamRef}
+        muted={true} 
         style={{
           position: "absolute",
-          // marginTop: "5%",
           marginLeft: "auto",
           marginRight: "auto",
-          left: 0,
-          right: 0,
           textAlign: "center",
-          zindex: 8,
+          zindex: 9,
           width: 640,
           height: 480,
         }}
-      />
+        />
 
-      <div
-        ref={transRef}
-        style={{
-          color: "white",
-          position: "absolute",
-          // marginTop: "5%",
-          marginLeft: "auto",
-          marginRight: "auto",
-          left: 0,
-          right: 0,
-          textAlign: "center",
-          zindex: 8,
-          width: 640,
-          height: 480,
-        }}
-      >
+        <canvas
+          ref={canvasRef}
+          style={{
+            position: "absolute",
+            // marginTop: "5%",
+            marginLeft: "auto",
+            marginRight: "auto",
+            textAlign: "center",
+            zindex: 8,
+            width: 640,
+            height: 480,
+          }}
+        />
       </div>
 
+      <div style = {{
+          display:"block",
+          
+          }
+        }>
+
+      <div style = {{
+          display:"block",
+
+          }
+        }>
+          <button
+            onClick={()=>setCaption([])}
+          >
+            초기화
+          </button>
+        </div>
+      <div
+          style={{
+            position: "absolute",
+            //marginTop: "",
+            width:480,
+            fontWeight:'bold',
+            fontSize: "large",
+
+            //display: "inline-block"
+          }}
+        >
+          Sign : {Caption}
+            
+        </div>
+      </div>
     </div>
   );
 
