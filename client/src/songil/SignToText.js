@@ -14,16 +14,16 @@ import {drawRect, getText} from "./utilities";
  */
 
 
-function SignToText({setTransText}) {
+function SignToText({setCaption}) {
   const webcamRef = useRef(null);
   const canvasRef = useRef(null);
   //const transRef = useRef(null);
 
-  const [Caption,setCaption] = useState([]);
+  //const [Caption,setCaption] = useState([]);
 
   let net;
-  // const model_url ='https://tensorflow-realtimemodel-hskw.s3.jp-tok.cloud-object-storage.appdomain.cloud/model.json'
-  const model_url = "https://tensorflow-realtimemodel-30-batch20.s3.jp-tok.cloud-object-storage.appdomain.cloud/model.json"
+  const model_url ='https://tensorflow-realtimemodel-hskw.s3.jp-tok.cloud-object-storage.appdomain.cloud/model.json'
+  //const model_url = "https://tensorflow-realtimemodel-30-batch20.s3.jp-tok.cloud-object-storage.appdomain.cloud/model.json"
   // Main function
   const runCoco = async () => {
     // 3. TODO - Load network 
@@ -114,14 +114,9 @@ function SignToText({setTransText}) {
       style={{
         //marginTop: "5%",
         width: 1280,
-        height: 600,
+        height: 470,
       }}
     >
-      <div style={{
-            width: 640,
-            height: 480,
-            //display:"blo",
-        }}>
         <Webcam
         ref={webcamRef}
         muted={true} 
@@ -135,7 +130,6 @@ function SignToText({setTransText}) {
           height: 480,
         }}
         />
-
         <canvas
           ref={canvasRef}
           style={{
@@ -149,44 +143,8 @@ function SignToText({setTransText}) {
             height: 480,
           }}
         />
-      </div>
-
-      <div style = {{
-          display:"block",
-          
-          }
-        }>
-
-      <div style = {{
-          display:"block",
-
-          }
-        }>
-          <button
-            onClick={()=>setCaption([])}
-          >
-            초기화
-          </button>
-        </div>
-      <div
-          style={{
-            position: "absolute",
-            //marginTop: "",
-            width:480,
-            fontWeight:'bold',
-            fontSize: "large",
-
-            //display: "inline-block"
-          }}
-        >
-          Sign : {Caption}
-            
-        </div>
-      </div>
     </div>
   );
-
-
 }
 
 

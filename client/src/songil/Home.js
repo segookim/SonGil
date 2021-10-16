@@ -8,9 +8,10 @@ import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Box from '@material-ui/core/Box';
 
-
 import SignToText from './SignToText'
 import SoundToText from './SoundToText'
+
+import SpeechRecognition, { useSpeechRecognition } from 'react-speech-recognition';
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -70,27 +71,36 @@ const useStyles = makeStyles((theme) => ({
 function RealTimeObjectDetection() {
   const classes = useStyles();
   const [value, setValue] = React.useState(0);
-  const [transText, setTransText] = useState('');
-  const [textList, setTextList] = useState(['']);
+  const [Caption, setCaption] = useState(['']);
+  const [Text, setText] = useState(['']);
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
 
-  function example() {
-    setTransText('');
-    setTextList(['']);
-  }
-
-
-  function add() {
-    let now = textList;
-    console.log(transText);
+    //SoundToText
+    const {
+      transcript,
+      listening,
+      resetTranscript,
+      //browserSupportsSpeechRecognition
+    } = useSpeechRecognition();
   
-    now.push([transText]);
-    setTextList(now);
-    console.log(textList);    
+    const startHandle = () => {
+      SpeechRecognition.startListening({language: 'ko', continuous: true});
+    };
+    
+    const stopHandle = async () => {
+      SpeechRecognition.stopListening();
+      resetTranscript();
+    };
+
+  function reset() {
+    setCaption(['']);
+    resetTranscript();
   }
+
+
 
   return (
     <div className={classes.root}>
@@ -106,18 +116,53 @@ function RealTimeObjectDetection() {
         >
           <LinkTab label="Motionless Sign To Text" {...a11yProps(0)} />
           <LinkTab label="Sound To Text" {...a11yProps(1)} />
-          <LinkTab label="Motion Sign To Text" disabled style={{color: "#000"}} {...a11yProps(2)} />
         </Tabs>
       </AppBar>
       <TabPanel value={value} index={0}>
-        <SignToText setTransText = {setTransText}/>
+        <SignToText setCaption  = {setCaption}/>
       </TabPanel>
       <TabPanel value={value} index={1}>
-        <SoundToText setTransText = {setTransText} add = {add} />
+        <SoundToText startHandle={startHandle} stopHandle={stopHandle} resetTranscript={resetTranscript} transcript={transcript} listening={listening} setTextsetText = {setText} />
       </TabPanel>
       <TabPanel value={value} index={2}>
-        
       </TabPanel>
+      <div style = {{
+          display:"block",
+          }
+        }>
+        <div style = {{
+          marginLeft: "3%"
+          }
+        }>
+          <button
+            onClick={()=>reset()}
+          >
+            초기화
+          </button>
+        </div>
+        <div style = {{
+          display:"flex",
+          }
+        }>
+          <div style = {{
+            color: "#FFFFFF", 
+            width: 640,
+            height: 240,
+            }
+          }>
+            Sign: {Caption}
+          </div>
+          <div style={{
+            color: "#FFFFFF", 
+            width: 640,
+            height: 240,
+
+          }}>
+            Sound: {transcript}
+          </div>
+        </div>
+      </div>
+
     </div>
   );
 }

@@ -9,9 +9,7 @@ import MicIcon from '@material-ui/icons/Mic';
 import PlayCircleFilledWhiteIcon from '@material-ui/icons/PlayCircleFilledWhite';
 import StopIcon from '@material-ui/icons/Stop';
 import RotateLeftIcon from '@material-ui/icons/RotateLeft';
-
 import SpeechRecognition, { useSpeechRecognition } from 'react-speech-recognition';
-import { add } from "@tensorflow/tfjs-core";
 
 /**
  * Class to handle the rendering of the Home page.
@@ -19,8 +17,9 @@ import { add } from "@tensorflow/tfjs-core";
  */
 
 
-function SoundToText({setTransText, add}) {
+function SoundToText({startHandle, stopHandle,resetTranscript,transcript,listening, setText}) {
   //SoundToText
+/*
   const {
     transcript,
     listening,
@@ -38,12 +37,9 @@ function SoundToText({setTransText, add}) {
   
   const stopHandle = async () => {
     SpeechRecognition.stopListening();
-    console.log(transcript);
-    setTransText(transcript);
-    add();
     resetTranscript();
   };
-  
+  */
   return (
     <div style={{
       color: "white",
@@ -62,8 +58,6 @@ function SoundToText({setTransText, add}) {
         color: "black",
         marginTop: "5%"
         }}>
-          {/* {listening == true ? setTransText(transcript) : ''}
-          {listening == false && transcript !== null ? add() : ''} */}
           {transcript}
       </p>
     </div>
