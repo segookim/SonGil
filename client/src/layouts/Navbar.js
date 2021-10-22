@@ -10,23 +10,29 @@ import green from "@material-ui/core/colors/green";
 
 
 const useStyles = makeStyles((theme) => ({
-    menuButton: {
-      marginRight: theme.spacing(2, 'auto')
+    // menuButton: {
+    //   marginRight: theme.spacing(2, 'auto')
+    // },
+    // loginButton:{
+    //   marginLeft: 'auto'
+    // },
+    // title: {
+    //   flexGrow: 1
+    // },
+    // customColor: {
+    //   // or hex code, this is normal CSS background-color
+    //   backgroundColor: green[500]
+    // },
+    // customHeight: {
+    //   minHeight: 200
+    // },
+    // offset: theme.mixins.toolbar
+    a:{
+      height : 150,
     },
-    loginButton:{
-      marginLeft: 'auto'
-    },
-    title: {
-      flexGrow: 1
-    },
-    customColor: {
-      // or hex code, this is normal CSS background-color
-      backgroundColor: green[500]
-    },
-    customHeight: {
-      minHeight: 200
-    },
-    offset: theme.mixins.toolbar
+    b: {
+      margin : 40,
+    }
   }));
 
 export const Navbar = () => {
@@ -37,10 +43,10 @@ export const Navbar = () => {
 
   return (
     <div>
-      <AppBar elevation={0} color='primary' position="static">
-        <Toolbar>
+      <AppBar className={classes.a} elevation={0} color='primary' position="static">
+        <Toolbar className={classes.b}>
             <IconButton href="/" color="inherit">
-                SonGil
+              Songil
             </IconButton>
 
             <IconButton href="/Explain" color="inherit">
