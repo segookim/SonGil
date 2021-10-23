@@ -1,19 +1,18 @@
 // export default About
 import React, { Component } from 'react';
-import '../../bootstrap.min.css';
 import { makeStyles } from '@material-ui/core/styles';
 /**
  * Class to handle the rendering of the Home page.
  * @extends React.Component
  */
 
-import kiwoongkim from './image/kiwoongkim.jpg'
-import segookim from './image/segookim.jpg'
-import haesungyang from './image/haesungyang.jpg'
-import Reactimg from './image/Reactimg.jpg'
-import Tensorflowimg from './image/Tensorflowimg.jpg'
-import Ibmcloudimg from './image/Ibmcloudimg.jpg'
-import Tensorflowjsimg from './image/Tensorflowjsimg.jpg'
+import kiwoongkim from '../images/kiwoongkim.jpg'
+import segookim from '../images/segookim.jpg'
+import haesungyang from '../images/haesungyang.jpg'
+import Reactimg from '../images/Reactimg.jpg'
+import Tensorflowimg from '../images/Tensorflowimg.jpg'
+import Ibmcloudimg from '../images/Ibmcloudimg.jpg'
+import Tensorflowjsimg from '../images/Tensorflowjsimg.jpg'
 
 const useStyles = makeStyles(() => ({
   root: {

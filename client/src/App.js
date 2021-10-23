@@ -3,20 +3,13 @@ import React, { Component } from 'react';
 //material-ui
 import { Container } from '@material-ui/core';
 
-// import Home from './layouts/Home'
-
 import { PropTypes } from 'prop-types';
-
-// import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
+
 import { Navbar } from  './layouts/Navbar';
-// import { Footer } from  './layouts/Footer';
 import Footer from  './layouts/Footer';
 import Routes from './Routes';
-// import Navbar from '.'
-
-// import './App.css';
-import './bootstrap.min.css';
+import './css/bootstrap.min.css';
 
 class App extends Component {
 

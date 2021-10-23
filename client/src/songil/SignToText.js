@@ -2,7 +2,8 @@
 import React, { useRef,useState, useEffect } from "react";
 import * as tf from "@tensorflow/tfjs";
 import Webcam from "react-webcam";
-import '../bootstrap.min.css';
+import '../css/bootstrap.min.css';
+// import '../bootstrap.min.css';
 // import "./App.css";
 // 2. TODO - Import drawing utility here
 // e.g. import { drawRect } from "./utilities";
@@ -23,7 +24,6 @@ function SignToText({setCaption}) {
 
   let net;
   const model_url ='https://tensorflow-realtimemodel-hskw.s3.jp-tok.cloud-object-storage.appdomain.cloud/model.json'
-  //const model_url = "https://tensorflow-realtimemodel-30-batch20.s3.jp-tok.cloud-object-storage.appdomain.cloud/model.json"
   // Main function
   const runCoco = async () => {
     // 3. TODO - Load network 

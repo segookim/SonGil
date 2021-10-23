@@ -1,5 +1,5 @@
 import React from 'react';
-import '../bootstrap.min.css';
+import '../css/bootstrap.min.css';
 
 /**
  * This is rendered when a route is not found (404).

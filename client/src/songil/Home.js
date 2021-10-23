@@ -14,7 +14,6 @@ import SpeechRecognition, { useSpeechRecognition } from 'react-speech-recognitio
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
-    // backgroundColor: theme.palette.background.paper,
     backgroundColor: "#444444"
   },
 }));
@@ -35,7 +34,6 @@ function Home() {
       transcript,
       listening,
       resetTranscript,
-      //browserSupportsSpeechRecognition
     } = useSpeechRecognition();
   
     const startHandle = () => {
@@ -58,7 +56,6 @@ function Home() {
 
       <>
        <div style = {{
-          // width: 3000,
           marginTop: "20%",
           display: "flex",
           justifyContent: "center"
@@ -82,18 +79,12 @@ function Home() {
             </div>
 
           </div>
-        
-
 
           <div style = {{
             width: 1300,
             }
           }>
-            <div style = {{
-            }
-            }>
             <SoundToText startHandle={startHandle} stopHandle={stopHandle} resetTranscript={resetTranscript} transcript={transcript} listening={listening} setTextsetText = {setText} />
-            </div>
 
             <div style = {{
                 marginTop: "48%",

@@ -1,36 +1,16 @@
-import React, { useState } from 'react';
+// import React, { useState } from 'react';
 import {
   AppBar,
   makeStyles,
   Toolbar,
 } from '@material-ui/core';
 import IconButton from "@material-ui/core/IconButton";
-import green from "@material-ui/core/colors/green";
-
-
 
 const useStyles = makeStyles((theme) => ({
-    // menuButton: {
-    //   marginRight: theme.spacing(2, 'auto')
-    // },
-    // loginButton:{
-    //   marginLeft: 'auto'
-    // },
-    // title: {
-    //   flexGrow: 1
-    // },
-    // customColor: {
-    //   // or hex code, this is normal CSS background-color
-    //   backgroundColor: green[500]
-    // },
-    // customHeight: {
-    //   minHeight: 200
-    // },
-    // offset: theme.mixins.toolbar
-    a:{
+    Root:{
       height : 150,
     },
-    b: {
+    ToolBar: {
       margin : 40,
     }
   }));
@@ -43,8 +23,8 @@ export const Navbar = () => {
 
   return (
     <div>
-      <AppBar className={classes.a} elevation={0} color='primary' position="static">
-        <Toolbar className={classes.b}>
+      <AppBar className={classes.Root} elevation={0} color='primary' position="static">
+        <Toolbar className={classes.ToolBar}>
             <IconButton href="/" color="inherit">
               Songil
             </IconButton>

@@ -1,7 +1,7 @@
 // Import dependencies
 import React from "react";
-import '../bootstrap.min.css';
-// import "./App.css";
+import '../css/bootstrap.min.css';
+// import '../bootstrap.min.css';
 // 2. TODO - Import drawing utility here
 // e.g. import { drawRect } from "./utilities";
 import Button from '@material-ui/core/Button';
