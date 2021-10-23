@@ -73,8 +73,9 @@ function Home() {
 
             <div style = {{
                 marginTop: "20%",
-                color: "#FFFFFF",
-                fontSize : "500%"
+                color: "black",
+                fontSize : "500%",
+                backgroundColor: 'white'
                 }
               }>
                 수어: {Caption}
@@ -89,8 +90,6 @@ function Home() {
             }
           }>
             <div style = {{
-              marginTop: "12%",
-              marginLeft: "60%"
             }
             }>
             <SoundToText startHandle={startHandle} stopHandle={stopHandle} resetTranscript={resetTranscript} transcript={transcript} listening={listening} setTextsetText = {setText} />
@@ -101,19 +100,17 @@ function Home() {
                 fontSize: "200%"
                 }
               }>
-              <button
-              onClick={()=>reset()}
-              >
+              <button onClick={()=>reset()}>
               전체 초기화
               </button>
             </div>
 
             <div style={{
-                marginTop: "7%",
-                color: "#FFFFFF", 
+                marginTop: "15%",
+                color: "black", 
                 width: 1300,
-                height: 240,
-                fontSize: "500%"
+                fontSize: "500%",
+                backgroundColor: "white"
               }}>
                 음성: {transcript}
             </div>

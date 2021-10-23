@@ -21,8 +21,7 @@ function SoundToText({startHandle, stopHandle,resetTranscript,transcript,listeni
   return (
     <div style={{
       color: "white",
-      marginTop:"5%",
-      transform: "scale(4)"
+      marginTop:"5%"
     }}>
       <h2>음성번역</h2>
       <p>
