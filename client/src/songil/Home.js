@@ -42,7 +42,6 @@ function Home() {
     
     const stopHandle = async () => {
       SpeechRecognition.stopListening();
-      resetTranscript();
     };
 
   function reset() {
@@ -51,59 +50,98 @@ function Home() {
   }
 
 
-
   return (
 
       <>
        <div style = {{
-          marginTop: "15%",
-          display: "flex",
-          justifyContent: "center"
           }
         }>
 
           <div style = {{
-            marginRight: "20%"
+             display:"flex"
           }
           }>
             <SignToText setCaption  = {setCaption}/>
 
-            <div style = {{
-                marginTop: "20%",
+            <div
+              style = {{
+                marginLeft: "3%",
+                width: "50%",
                 color: "black",
                 fontSize : "300%",
-                backgroundColor: 'white'
+                backgroundColor: 'white',
+                height:"540px"
                 }
               }>
-                수어: {Caption}
-            </div>
+                <div style={{
+                  display: "flex",
+                  justifyContent: "space-between",
+                  backgroundColor: "#DDDDDD"
+                }}>
+                  수어 인식 결과
+                    <button onClick={()=>reset()}
+                     style = {{
+                      fontSize: "70%",
+                      margin: "1%"
+                    }}
+                    >
+                    결과 초기화
+                    </button>
+                </div>
 
+                <div style={{
+                  padding:"1%",
+                  height:"468px",
+                  overflowY:"scroll",
+                  fontSize: "80%"
+                }}>
+                  {Caption}
+                </div>
+            </div>
           </div>
 
           <div style = {{
-            width: 1300,
+            marginTop:"5%",
+            display:"flex",
+            width: "100%",
             }
           }>
-            <SoundToText startHandle={startHandle} stopHandle={stopHandle} resetTranscript={resetTranscript} transcript={transcript} listening={listening} setTextsetText = {setText} />
-
-            <div style = {{
-                marginTop: "48%",
-                fontSize: "200%"
-                }
-              }>
-              <button onClick={()=>reset()}>
-              전체 초기화
-              </button>
-            </div>
+            
+            <SoundToText 
+              startHandle={startHandle} stopHandle={stopHandle} resetTranscript={resetTranscript} transcript={transcript} listening={listening} setTextsetText = {setText} />
 
             <div style={{
-                marginTop: "19%",
+                marginLeft: "3%",
+                width: "50%",
                 color: "black", 
-                width: 640,
                 fontSize: "300%",
-                backgroundColor: "white"
-              }}>
-                음성: {transcript}
+                backgroundColor: "white",
+                height: "270px"
+              }}
+              >
+                <div style={{
+                  display: "flex",
+                  justifyContent: "space-between",
+                  backgroundColor: "#DDDDDD"
+                }}>
+                  음성 인식 결과
+                  <button onClick={()=>resetTranscript()}
+                     style = {{
+                      fontSize: "70%",
+                      margin: "1%"
+                    }}
+                    >
+                    결과 초기화
+                    </button>
+                </div>
+                <div style={{
+                  padding:"1%",
+                  height:"198px",
+                  fontSize: "80%",
+                  overflowY:"scroll",
+                }}>
+                  {transcript}
+                </div>
             </div>
 
           </div>

@@ -112,10 +112,10 @@ function SignToText({setCaption}) {
   return (
     <div
       style={{
-        
-        width: 640,
-        height: 480,
-        
+        // width: 640,
+        // height: 480,
+        width: 720,
+        height: 540,
       }}
     >
         <Webcam
@@ -127,23 +127,24 @@ function SignToText({setCaption}) {
           marginRight: "auto",
           textAlign: "center",
           zindex: 9,
-          // width: 640,
-          // height: 480,
-          width: 640,
-          height: 480,
+          width: 720,
+          height: 540,
         }}
         />
         <canvas
           ref={canvasRef}
           style={{
             position: "absolute",
-            // marginTop: "5%",
             marginLeft: "auto",
             marginRight: "auto",
             textAlign: "center",
             zindex: 8,
-            width: 650,
-            height: 480,
+            width: 720,
+            height: 540,
+            // width: 900,
+            // height: 600,
+            // width: 650,
+            // height: 480,
           }}
         />
     </div>

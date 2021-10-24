@@ -21,15 +21,27 @@ function SoundToText({startHandle, stopHandle,resetTranscript,transcript,listeni
   return (
     <div style={{
       color: "white",
+      width:"720px",
+      fontSize: "300%",
     }}>
-      <h2>음성번역</h2>
-      <p>
-        <MicIcon/>
+      음성번역
+      <div style={{
+        fontSize: "80%",
+      }}>
+        <MicIcon style={{
+          transform:"scale(1.5)", marginRight: "2%"
+        }}/>
         {listening ? 'on' : 'off'}
-      </p>
-      <Button variant="outlined" color="inherit" onClick={startHandle}><PlayCircleFilledWhiteIcon/></Button>
-      <Button style={{marginLeft: "1%"}} variant="outlined" color="inherit" onClick={stopHandle}><StopIcon/></Button>
-      <Button style={{marginLeft: "1%"}} variant="outlined" color="inherit" onClick={resetTranscript}><RotateLeftIcon/></Button>
+      </div>
+      <Button variant="outlined" color="inherit" onClick={startHandle} style={{
+        transform:"scale(1.5)",
+        marginRight: "2%",
+        marginLeft: "2%",
+      }}><PlayCircleFilledWhiteIcon/></Button>
+      <Button variant="outlined" color="inherit" onClick={stopHandle}style={{
+        transform:"scale(1.5)",
+        marginLeft: "5%",
+      }}><StopIcon/></Button>
     </div>
   );
 }

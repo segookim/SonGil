@@ -6,7 +6,6 @@ import ex1 from '../images/ex.jpg'
 const useStyles = makeStyles(() => ({
     root:{
         color: 'white',
-        marginTop: "5%"
     },
     a:{
         width: 1500,

@@ -35,7 +35,7 @@ class App extends Component {
     return (
         <div className="App">
           <Navbar />
-          <Container>
+          <Container  maxWidth="false" style={{ padding:"1%", paddingTop:"5%"}}>
             <Routes />
           </Container>
           <Footer />
