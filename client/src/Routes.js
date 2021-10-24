@@ -1,6 +1,6 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
-import About from './layouts/About/About';
+import About from './layouts/About';
 import Explain from './layouts/Explain';
 import NotFound from './layouts/NotFound';
 import Home from './songil/Home';

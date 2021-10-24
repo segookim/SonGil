@@ -1,12 +1,12 @@
 import React from "react";
 import { makeStyles } from '@material-ui/core/styles';
 
-import ex1 from '../images/1.jpg'
-import ex2 from '../images/2.jpg'
+import ex1 from '../images/ex.jpg'
 
 const useStyles = makeStyles(() => ({
     root:{
-        color: 'white'
+        color: 'white',
+        marginTop: "5%"
     },
     a:{
         width: 1500,
@@ -32,10 +32,6 @@ const Home = () => {
             <h1>사용방법 및 기능순서</h1>
             <div>
                 <img className={classes.a} src={ex1}></img>
-            </div>
-
-            <div>
-                <img className={classes.b} src={ex2}></img>
             </div>
 
         </div>

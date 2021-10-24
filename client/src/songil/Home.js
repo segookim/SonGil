@@ -56,7 +56,7 @@ function Home() {
 
       <>
        <div style = {{
-          marginTop: "20%",
+          marginTop: "15%",
           display: "flex",
           justifyContent: "center"
           }
@@ -71,7 +71,7 @@ function Home() {
             <div style = {{
                 marginTop: "20%",
                 color: "black",
-                fontSize : "500%",
+                fontSize : "300%",
                 backgroundColor: 'white'
                 }
               }>
@@ -97,10 +97,10 @@ function Home() {
             </div>
 
             <div style={{
-                marginTop: "15%",
+                marginTop: "19%",
                 color: "black", 
-                width: 1300,
-                fontSize: "500%",
+                width: 640,
+                fontSize: "300%",
                 backgroundColor: "white"
               }}>
                 음성: {transcript}
