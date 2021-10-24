@@ -114,8 +114,8 @@ function SignToText({setCaption}) {
       style={{
         // width: 640,
         // height: 480,
-        width: 720,
-        height: 540,
+        width: "48%",
+        // height: 540,
       }}
     >
         <Webcam
@@ -127,8 +127,8 @@ function SignToText({setCaption}) {
           marginRight: "auto",
           textAlign: "center",
           zindex: 9,
-          width: 720,
-          height: 540,
+          // width: 720,
+          // height: 540,
         }}
         />
         <canvas

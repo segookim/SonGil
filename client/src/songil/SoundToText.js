@@ -21,7 +21,7 @@ function SoundToText({startHandle, stopHandle,resetTranscript,transcript,listeni
   return (
     <div style={{
       color: "white",
-      width:"720px",
+      width:"48%",
       fontSize: "300%",
     }}>
       음성번역

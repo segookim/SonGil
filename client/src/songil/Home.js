@@ -65,8 +65,8 @@ function Home() {
 
             <div
               style = {{
-                marginLeft: "3%",
-                width: "50%",
+                marginLeft: "4%",
+                width: "48%",
                 color: "black",
                 fontSize : "300%",
                 backgroundColor: 'white',
@@ -111,8 +111,8 @@ function Home() {
               startHandle={startHandle} stopHandle={stopHandle} resetTranscript={resetTranscript} transcript={transcript} listening={listening} setTextsetText = {setText} />
 
             <div style={{
-                marginLeft: "3%",
-                width: "50%",
+                marginLeft: "4%",
+                width: "48%",
                 color: "black", 
                 fontSize: "300%",
                 backgroundColor: "white",
