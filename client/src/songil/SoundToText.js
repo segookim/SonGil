@@ -24,7 +24,7 @@ function SoundToText({startHandle, stopHandle,resetTranscript,transcript,listeni
       width:"48%",
       fontSize: "300%",
     }}>
-      음성번역
+      음성 인식
       <div style={{
         fontSize: "80%",
       }}>
