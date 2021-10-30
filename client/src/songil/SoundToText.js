@@ -22,24 +22,25 @@ function SoundToText({startHandle, stopHandle,resetTranscript,transcript,listeni
     <div style={{
       color: "white",
       width:"48%",
-      fontSize: "300%",
+      fontSize: "3vw",
     }}>
       음성 인식
       <div style={{
         fontSize: "80%",
       }}>
         <MicIcon style={{
-          transform:"scale(1.5)", marginRight: "2%"
+          // transform:"scale(1.5)",
+          marginRight: "2%"
         }}/>
         {listening ? 'on' : 'off'}
       </div>
       <Button variant="outlined" color="inherit" onClick={startHandle} style={{
-        transform:"scale(1.5)",
+        // transform:"scale(1.5)",
         marginRight: "2%",
         marginLeft: "2%",
       }}><PlayCircleFilledWhiteIcon/></Button>
       <Button variant="outlined" color="inherit" onClick={stopHandle}style={{
-        transform:"scale(1.5)",
+        // transform:"scale(1.5)",
         marginLeft: "5%",
       }}><StopIcon/></Button>
     </div>

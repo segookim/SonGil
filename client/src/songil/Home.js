@@ -58,25 +58,32 @@ function Home() {
         }>
 
           <div style = {{
-             display:"flex"
+             display:"flex",
+             height: "20%",
           }
           }>
-            <SignToText setCaption  = {setCaption}/>
+            <div style={{
+              color: "white",
+              width:"48%",
+              fontSize: "3vw",
+            }}>
+              음성 인식
+
+              <SignToText setCaption  = {setCaption}/>
+            </div>
 
             <div
               style = {{
                 marginLeft: "4%",
                 width: "48%",
                 color: "black",
-                fontSize : "300%",
-                backgroundColor: 'white',
-                height:"540px"
+                fontSize : "3vw",
                 }
               }>
                 <div style={{
                   display: "flex",
                   justifyContent: "space-between",
-                  backgroundColor: "#DDDDDD"
+                  color:"white"
                 }}>
                   수어 인식 결과
                     <button onClick={()=>reset()}
@@ -91,9 +98,11 @@ function Home() {
 
                 <div style={{
                   padding:"1%",
-                  height:"468px",
+                  // height:"468px",
+                  height: "30vw",
                   overflowY:"scroll",
-                  fontSize: "80%"
+                  fontSize: "80%",
+                  backgroundColor: "white",
                 }}>
                   {Caption}
                 </div>
@@ -114,15 +123,14 @@ function Home() {
                 marginLeft: "4%",
                 width: "48%",
                 color: "black", 
-                fontSize: "300%",
-                backgroundColor: "white",
+                fontSize: "3vw",
                 height: "270px"
               }}
               >
                 <div style={{
                   display: "flex",
                   justifyContent: "space-between",
-                  backgroundColor: "#DDDDDD"
+                  color: "white"
                 }}>
                   음성 인식 결과
                   <button onClick={()=>resetTranscript()}
@@ -139,6 +147,7 @@ function Home() {
                   height:"198px",
                   fontSize: "80%",
                   overflowY:"scroll",
+                  backgroundColor: "white",
                 }}>
                   {transcript}
                 </div>

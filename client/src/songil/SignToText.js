@@ -114,19 +114,21 @@ function SignToText({setCaption}) {
       style={{
         // width: 640,
         // height: 480,
-        width: "48%",
         // height: 540,
       }}
     >
         <Webcam
         ref={webcamRef}
-        muted={true} 
+        muted={true}
+        forceScreenshotSourceSize="true"
         style={{
-          position: "absolute",
+          // position: "absolute",
           marginLeft: "auto",
           marginRight: "auto",
-          textAlign: "center",
+          // textAlign: "center",
           zindex: 9,
+          width: "100%",
+          height: "30vw"
           // width: 720,
           // height: 540,
         }}

@@ -9,6 +9,7 @@ import IconButton from "@material-ui/core/IconButton";
 const useStyles = makeStyles((theme) => ({
     Root:{
       // height : 150,
+      fontSize: "3vw"
     },
     ToolBar: {
       marginTop : "1%",
