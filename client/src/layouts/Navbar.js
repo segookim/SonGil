@@ -28,17 +28,17 @@ export const Navbar = () => {
       <AppBar className={classes.Root} elevation={0} color='primary' position="static">
         <Toolbar className={classes.ToolBar}>
             <IconButton href="/" color="inherit">
-              Songil
+              메인페이지
             </IconButton>
-
             <IconButton href="/Explain" color="inherit">
-                Explain
+              도움말
             </IconButton>
-
+            <IconButton href="/HandInfo" color="inherit">
+              지원 수어 살펴보기
+            </IconButton>
             <IconButton href="/About" color="inherit">
-                About
+              개발자소개
             </IconButton>
-
         </Toolbar>
       </AppBar>
       

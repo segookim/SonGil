@@ -112,6 +112,7 @@ function SignToText({setCaption}) {
   return (
     <div
       style={{
+        margin: "1%"
         // width: 640,
         // height: 480,
         // height: 540,

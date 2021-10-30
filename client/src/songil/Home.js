@@ -148,6 +148,8 @@ function Home() {
                   fontSize: "80%",
                   overflowY:"scroll",
                   backgroundColor: "white",
+                  height: "30vw"
+
                 }}>
                   {transcript}
                 </div>
