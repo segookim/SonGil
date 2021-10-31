@@ -27,7 +27,8 @@ const useStyles = makeStyles(() => ({
     left: 0,
     right: 0,
     textAlign: "center",
-    width: 1200,
+    width: "90vw",
+    // width: 1200,
     // height: 200,
   },
   introduce: {
@@ -40,7 +41,8 @@ const useStyles = makeStyles(() => ({
     left: 0,
     right: 0,
     textAlign: "center",
-    width: 1200,
+    width: "90vw",
+    // width: 1200,
     // height: 800,
   },
   technique: {
@@ -53,7 +55,8 @@ const useStyles = makeStyles(() => ({
     left: 0,
     right: 0,
     textAlign: "center",
-    width: 1200,
+    width: "90vw",
+    // width: 1200,
   },
   sort: {
     marginTop: "3%",
@@ -116,9 +119,9 @@ const About = () => {
         <div className={classes.Motivation}>
           <h3>개발 동기</h3>
             <div className={classes.sort}>
-              <p>안녕하세요 저희는 '더 나은 세상'이라는 사회적 가치 실현에 중점을 두고있는 주니어 개발자들입니다.</p>
+              <p>안녕하세요 저희는 '더 나은 세상'이라는 사회적 가치 실현에 중점을 두고있는 개발자들입니다.</p>
               <p>호떡장사를 하시는 농아인분이 손님과의 의사소통에 불편함을 느끼시는 것을 보고, 해당 문제점을 해결하고자 이번 웹앱프로젝트를 준비하게 되었습니다.</p>
-              <p>각광받고 있는 tensorflow ai기술을 이용하여 농아인과 보다 더 가까운 세상을 그려보고자 합니다.</p>
+              <p>각광받고 있는 TensorFlow AI기술을 이용하여 농아인과 보다 더 가까운 세상을 그려보고자 합니다.</p>
             </div>
           
         </div>

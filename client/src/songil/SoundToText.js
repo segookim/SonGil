@@ -20,6 +20,7 @@ function SoundToText({startHandle, stopHandle,resetTranscript,transcript,listeni
   //SoundToText
   return (
     <div style={{
+      marginTop: "1%",
       color: "white",
       width:"48%",
       fontSize: "3vw",

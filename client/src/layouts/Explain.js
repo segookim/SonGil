@@ -7,20 +7,13 @@ import ex2 from '../images/ex2.jpg'
 const useStyles = makeStyles(() => ({
     root:{
         color: 'white',
-        textAlign: 'center'
+        textAlign: 'center',
+        fontSize: "3vw",
     },
     a:{
-        width: 1200,
-        height: 670,
+        width: "90vw",
         marginTop: 40
     },
-    b:{
-
-        width: 1500,
-        height: 600,
-        marginTop: 40
-    },
-
 }));
 
 
@@ -31,7 +24,7 @@ const Home = () => {
     return(
         <div className={classes.root}>
             
-            <h1>사용방법 및 기능순서</h1>
+            사용방법 및 기능순서
             <div>
                 <img className={classes.a} src={ex1}></img>
                 <img className={classes.a} src={ex2}></img>

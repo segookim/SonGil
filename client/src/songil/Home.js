@@ -67,8 +67,7 @@ function Home() {
               width:"48%",
               fontSize: "3vw",
             }}>
-              음성 인식
-
+              수어 인식
               <SignToText setCaption  = {setCaption}/>
             </div>
 
@@ -89,7 +88,6 @@ function Home() {
                     <button onClick={()=>reset()}
                      style = {{
                       fontSize: "70%",
-                      margin: "1%"
                     }}
                     >
                     결과 초기화
@@ -97,6 +95,7 @@ function Home() {
                 </div>
 
                 <div style={{
+                  marginTop: "1%",
                   padding:"1%",
                   // height:"468px",
                   height: "30vw",
@@ -136,13 +135,13 @@ function Home() {
                   <button onClick={()=>resetTranscript()}
                      style = {{
                       fontSize: "70%",
-                      margin: "1%"
                     }}
                     >
                     결과 초기화
                     </button>
                 </div>
                 <div style={{
+                  marginTop: "1%",
                   padding:"1%",
                   height:"198px",
                   fontSize: "80%",

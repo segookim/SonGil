@@ -71,8 +71,8 @@ function SignToText({setCaption}) {
       webcamRef.current.video.height = videoHeight;
 
       // Set canvas height and width
-      canvasRef.current.width = videoWidth;
-      canvasRef.current.height = videoHeight;
+      // canvasRef.current.width = videoWidth;
+      // canvasRef.current.height = videoHeight;
 
       // 4. TODO - Make Detections
       const img = tf.browser.fromPixels(video)
@@ -89,7 +89,7 @@ function SignToText({setCaption}) {
       // Draw mesh
       // getContext에서 해당 컨텍스트를 찾지 못하는 예외 처리
       try{
-        const ctx = canvasRef.current.getContext("2d");
+        // const ctx = canvasRef.current.getContext("2d");
 
         setCaption(Caption => [...Caption, getText(classes[0], scores[0], 0.8)]);
 
@@ -112,7 +112,7 @@ function SignToText({setCaption}) {
   return (
     <div
       style={{
-        margin: "1%"
+        marginTop: "1%"
         // width: 640,
         // height: 480,
         // height: 540,
@@ -133,22 +133,6 @@ function SignToText({setCaption}) {
           // width: 720,
           // height: 540,
         }}
-        />
-        <canvas
-          ref={canvasRef}
-          style={{
-            position: "absolute",
-            marginLeft: "auto",
-            marginRight: "auto",
-            textAlign: "center",
-            zindex: 8,
-            width: 720,
-            height: 540,
-            // width: 900,
-            // height: 600,
-            // width: 650,
-            // height: 480,
-          }}
         />
     </div>
   );
