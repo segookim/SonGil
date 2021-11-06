@@ -18,9 +18,8 @@ import {drawRect, getText} from "./utilities";
 function SignToText({setCaption}) {
   const webcamRef = useRef(null);
   const canvasRef = useRef(null);
-  //const transRef = useRef(null);
-
-  //const [Caption,setCaption] = useState([]);
+  let CurrentValue= ' ';
+  let BeforeValue= '';
 
   let net;
   const model_url ='https://tensorflow-realtimemodel-hskw.s3.jp-tok.cloud-object-storage.appdomain.cloud/model.json'
@@ -86,18 +85,24 @@ function SignToText({setCaption}) {
       const classes = await obj[2].array()
       const scores = await obj[4].array()
 
+
+      
       // Draw mesh
-      // getContext에서 해당 컨텍스트를 찾지 못하는 예외 처리
       try{
-        // const ctx = canvasRef.current.getContext("2d");
+        const ctx = canvasRef.current.getContext("2d");
+        
+        CurrentValue = getText(classes[0], scores[0], 0.8)
 
-        setCaption(Caption => [...Caption, getText(classes[0], scores[0], 0.8)]);
-
-        //requestAnimationFrame(()=> {drawRect(boxes[0], classes[0], scores[0], 0.8, videoWidth, videoHeight, ctx)})
-      } catch(error){
-        console.log(error)
-
+        if (CurrentValue !== BeforeValue){
+            setCaption(Caption => [...Caption, CurrentValue]);
+            BeforeValue = CurrentValue;
+            requestAnimationFrame(()=> {drawRect(boxes[0], classes[0], scores[0], 0.8, videoWidth, videoHeight, ctx)})    
+        }
+        
+      }catch(err){
+        console.log(err)
       }
+      
         tf.dispose(img)
         tf.dispose(resized)
         tf.dispose(casted)

@@ -9,7 +9,7 @@
   "scripts": {
     "start": "node index.js",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
-    "server": "nodemon start",
+    "server": "npm start",
     "client": "cd client && npm start",
     "heroku-postbuild": "cd client && npm install && npm run build"
   },
