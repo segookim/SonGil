@@ -3,17 +3,8 @@ import React, { useRef,useState, useEffect } from "react";
 import * as tf from "@tensorflow/tfjs";
 import Webcam from "react-webcam";
 import '../css/bootstrap.min.css';
-// import '../bootstrap.min.css';
-// import "./App.css";
-// 2. TODO - Import drawing utility here
-// e.g. import { drawRect } from "./utilities";
-import {drawRect, getText} from "./utilities";
 
-/**
- * Class to handle the rendering of the Home page.
- * @extends React.Component
- */
-
+import { getText } from "./utilities";
 
 function SignToText({setCaption}) {
   const webcamRef = useRef(null);
@@ -96,7 +87,7 @@ function SignToText({setCaption}) {
         if (CurrentValue !== BeforeValue){
             setCaption(Caption => [...Caption, CurrentValue]);
             BeforeValue = CurrentValue;
-            requestAnimationFrame(()=> {drawRect(boxes[0], classes[0], scores[0], 0.8, videoWidth, videoHeight, ctx)})    
+            //requestAnimationFrame(()=> {drawRect(boxes[0], classes[0], scores[0], 0.8, videoWidth, videoHeight, ctx)})    
         }
         
       }catch(err){

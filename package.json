@@ -23,8 +23,9 @@
     "http-proxy-middleware": "^2.0.0",
     "mongoose": "^6.0.12",
     "nodemon": "^2.0.14",
-    "seedrandom": "^3.0.5"
+    "path": "^0.12.7",
+    "seedrandom": "^3.0.5",
+    "url": "^0.11.0"
   },
-  "type" : "module"
-
+  "type": "module"
 }
