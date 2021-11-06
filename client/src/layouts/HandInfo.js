@@ -1,7 +1,6 @@
-import React from "react";
-// import { Collapse } from "@material-ui/core";
+import React, {useEffect, useState} from "react";
 import { makeStyles } from '@material-ui/core/styles';
-// import Tensorflowjsimg from '../images/Tensorflowjsimg.jpg'
+import axios from 'axios'
 
 const useStyles = makeStyles(() => ({
     root:{
@@ -50,8 +49,27 @@ class Collapse extends React.Component {
 
 
 const HandInfo = () => {
-    // const images = [{"you": '../images/너.jpg'}]
+  const [hand,setHand] = useState([]);
 
+  const config = {
+    headers: {
+        "Content-Type": "application/json",
+    },
+  };
+  
+  useEffect(()=>{
+    const hands = axios.get('http://localhost:5000/api/hand', config)
+    .then((Response)=>{
+      console.log(Response.data)
+      setHand(Response.data)
+      return Response.data
+    })
+    .catch((Error)=>{console.log(Error)})
+  },[]);
+
+  const handInfos = hand;
+
+    /*
     const handInfos = [
       {image:"multiply", shape:"두 주먹의 1지를 펴서 ‘X’자로 맞댄다.", meaning:"곱하기"},
       {image:"ear", shape:"오른 주먹의 1·5지로 오른쪽 귀를 잡는다.", meaning:"귀"},
@@ -84,6 +102,7 @@ const HandInfo = () => {
       {image:"nose", shape:"오른 주먹의 1지를 펴서 끝 바닥을 코에 댄다.", meaning:"코"},
       {image:"turnon", shape:"손끝이 밖으로 향하게 모아 댄 두 손의 손끝을 1·2·3·4지 끝이 약간 위로 향하게 편다", meaning:"켜다"},
     ]
+    */
 
     const handList = handInfos.map((handInfo) => (
         // import you from {handInfo.image}

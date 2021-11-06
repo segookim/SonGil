@@ -9,7 +9,7 @@
   "scripts": {
     "start": "node index.js",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
-    "server": "npm start",
+    "server": "nodemon start",
     "client": "cd client && npm start",
     "heroku-postbuild": "cd client && npm install && npm run build"
   },
@@ -17,9 +17,14 @@
   "license": "ISC",
   "dependencies": {
     "concurrently": "^6.1.0",
+    "cors": "^2.8.5",
+    "dotenv": "^10.0.0",
     "express": "^4.17.1",
     "http-proxy-middleware": "^2.0.0",
-    "nodemon": "^2.0.7",
+    "mongoose": "^6.0.12",
+    "nodemon": "^2.0.14",
     "seedrandom": "^3.0.5"
-  }
+  },
+  "type" : "module"
+
 }
