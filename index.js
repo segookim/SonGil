@@ -26,6 +26,7 @@ app.listen(port, ()=>{
   console.log(`Server started on Port ${port}`);
 })
 
+// routes
 app.use('/api/hand',handinfoRoutes);
 
 mongoose
@@ -37,7 +38,6 @@ mongoose
 
 // 리액트 정적 파일 제공
 app.use(express.static(path.join(__dirname, 'client/build')));
-
 
 // 라우트 설정
 app.get('*', (req, res) => {

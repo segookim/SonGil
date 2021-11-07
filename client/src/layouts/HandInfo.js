@@ -49,16 +49,32 @@ class Collapse extends React.Component {
 
 
 const HandInfo = () => {
+
   const [hand,setHand] = useState([]);
-  /*
+
+  //url 설정
+  let url ='http://localhost:5000/api/hand'
+  if(process.env.NODE_ENV === 'production'){
+    url ='https://songil-project.herokuapp.com/api/hand'
+  } 
+
+  const useStyles = makeStyles(() => ({
+    root:{
+        color: 'white',
+        textAlign: 'center',
+        fontSize: "3vw"
+    },
+  }),[]);  
+
   const config = {
     headers: {
         "Content-Type": "application/json",
     },
   };
-
+  
   useEffect(()=>{
-    const hands = axios.get('http://localhost:5000/api/hand', config)
+    
+    const hands = axios.get(url, config)
     .then((Response)=>{
       console.log(Response.data)
       setHand(Response.data)
@@ -68,8 +84,8 @@ const HandInfo = () => {
   },[]);
 
   const handInfos = hand;
-  */
-    
+
+    /*
     const handInfos = [
       {image:"multiply", shape:"두 주먹의 1지를 펴서 ‘X’자로 맞댄다.", meaning:"곱하기"},
       {image:"ear", shape:"오른 주먹의 1·5지로 오른쪽 귀를 잡는다.", meaning:"귀"},
@@ -102,7 +118,7 @@ const HandInfo = () => {
       {image:"nose", shape:"오른 주먹의 1지를 펴서 끝 바닥을 코에 댄다.", meaning:"코"},
       {image:"turnon", shape:"손끝이 밖으로 향하게 모아 댄 두 손의 손끝을 1·2·3·4지 끝이 약간 위로 향하게 편다", meaning:"켜다"},
     ]
-  
+    */
     const handList = handInfos.map((handInfo) => (
         // import you from {handInfo.image}
         <Collapse title={handInfo.meaning}>
