@@ -44,6 +44,7 @@ class Collapse extends React.Component {
 const HandInfo = () => {
 
   const [hand,setHand] = useState([]);
+  const [query, setQuery] = useState("")
 
   //url 설정
   let url ='http://localhost:5000/api/hand'
@@ -78,8 +79,6 @@ const HandInfo = () => {
 
   const handInfos = hand;
 
-  const [query, setQuery] = useState("")
-
   const handList = 
     handInfos.filter(handInfo => {
       if (query === '') {
@@ -99,17 +98,17 @@ const HandInfo = () => {
       </div>
   ));
 
-    const classes = useStyles();
+  const classes = useStyles();
 
-    return(
-        <div className={classes.root}>
-            지원 수어 살펴보기
-            <div style={{width: "90%", marginTop: "3%", marginLeft: "5%",}}>
-              <input placeholder="검색" onChange={event => setQuery(event.target.value)} /> 
-              {handList}
-            </div>
-        </div>
-    );
+  return(
+      <div className={classes.root}>
+          지원 수어 살펴보기
+          <div style={{width: "90%", marginTop: "3%", marginLeft: "5%",}}>
+            <input placeholder="검색" onChange={event => setQuery(event.target.value)} /> 
+            {handList}
+          </div>
+      </div>
+  );
 }
 
 export default HandInfo

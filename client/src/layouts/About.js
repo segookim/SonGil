@@ -16,7 +16,8 @@ import Tensorflowjsimg from '../images/Tensorflowjsimg.jpg'
 
 const useStyles = makeStyles(() => ({
   root: {
-    color: "black"
+    color: "white",
+    textAlign: "center"
   },
   Motivation: {
     backgroundColor: "white",
@@ -28,13 +29,16 @@ const useStyles = makeStyles(() => ({
     right: 0,
     textAlign: "center",
     width: "90vw",
+    color: "black",
+    marginTop: "1%",
+    marginBottom: "5%"
     // width: 1200,
     // height: 200,
   },
   introduce: {
     backgroundColor: "white",
     position: "2",
-    marginTop: "5%",
+    marginTop: "1%",
     padding: "2%",
     marginLeft: "auto",
     marginRight: "auto",
@@ -42,13 +46,14 @@ const useStyles = makeStyles(() => ({
     right: 0,
     textAlign: "center",
     width: "90vw",
+    marginBottom: "5%"
     // width: 1200,
     // height: 800,
   },
   technique: {
     backgroundColor: "white",
     position: "3",
-    marginTop: "5%",
+    marginTop: "1%",
     padding: "2%",
     marginLeft: "auto",
     marginRight: "auto",
@@ -116,19 +121,17 @@ const About = () => {
     return (
       <div className={classes.root}>
 
+        <h1>개발 동기</h1>
         <div className={classes.Motivation}>
-          <h3>개발 동기</h3>
             <div className={classes.sort}>
               <p>안녕하세요 저희는 '더 나은 세상'이라는 사회적 가치 실현에 중점을 두고있는 개발자들입니다.</p>
               <p>호떡장사를 하시는 농아인분이 손님과의 의사소통에 불편함을 느끼시는 것을 보고, 해당 문제점을 해결하고자 이번 웹앱프로젝트를 준비하게 되었습니다.</p>
               <p>각광받고 있는 TensorFlow AI기술을 이용하여 농아인과 보다 더 가까운 세상을 그려보고자 합니다.</p>
             </div>
-          
         </div>
 
+        <h1>개발자 소개</h1>
         <div className={classes.introduce}>
-          <h3>개발자 소개</h3>
-
           <div className={classes.kiwoongkim}>
             <img className={classes.kiwoongkimimg} src={kiwoongkim} />
             <div className={classes.content}>
@@ -163,8 +166,8 @@ const About = () => {
           </div>
         </div>
 
+        <h1>사용 기술</h1>
         <div className={classes.technique}>
-          <h3>사용 기술</h3>
           <img className={classes.techimg} src={Reactimg} />
           <img className={classes.techimg} src={Tensorflowimg} />
           <img className={classes.techimg} src={Tensorflowjsimg} />
