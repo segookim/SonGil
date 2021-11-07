@@ -2,13 +2,6 @@ import React, {useEffect, useState} from "react";
 import { makeStyles } from '@material-ui/core/styles';
 import axios from 'axios'
 
-const useStyles = makeStyles(() => ({
-    root:{
-        color: 'white',
-        textAlign: 'center',
-        fontSize: "3vw"
-    },
-}));
 
 class Collapse extends React.Component {
     constructor(props) {
