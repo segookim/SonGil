@@ -4,7 +4,7 @@ import React, { useEffect, useState } from 'react';
 
 import { makeStyles } from '@material-ui/core/styles';
 
-
+import Button from '@material-ui/core/Button';
 import SignToText from './SignToText'
 import SoundToText from './SoundToText'
 
@@ -85,13 +85,13 @@ function Home() {
                   color:"white"
                 }}>
                   수어 인식 결과
-                    <button onClick={()=>reset()}
+                    <Button variant="contained" color="primary" onClick={()=>reset()}
                      style = {{
                       fontSize: "70%",
                     }}
                     >
-                    결과 초기화
-                    </button>
+                      결과 초기화
+                    </Button>
                 </div>
 
                 <div style={{
@@ -132,15 +132,16 @@ function Home() {
                   color: "white"
                 }}>
                   음성 인식 결과
-                  <button onClick={()=>resetTranscript()}
+                  <Button variant="contained" color="primary" onClick={()=>resetTranscript()}
                      style = {{
                       fontSize: "70%",
                     }}
                     >
                     결과 초기화
-                    </button>
+                    </Button>
                 </div>
                 <div style={{
+                  borderRadius: "4px",
                   marginTop: "1%",
                   padding:"1%",
                   height:"198px",
@@ -148,7 +149,7 @@ function Home() {
                   overflowY:"scroll",
                   backgroundColor: "white",
                   height: "30vw"
-
+                  
                 }}>
                   {transcript}
                 </div>

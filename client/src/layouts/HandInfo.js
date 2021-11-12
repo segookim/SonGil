@@ -1,7 +1,13 @@
 import React, {useEffect, useState} from "react";
 import { makeStyles } from '@material-ui/core/styles';
 import axios from 'axios'
-
+import Accordion from '@mui/material/Accordion';
+import AccordionSummary from '@mui/material/AccordionSummary';
+import AccordionDetails from '@mui/material/AccordionDetails';
+import Typography from '@mui/material/Typography';
+// import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+// import AccessibilityIcon from '@mui/icons-material/Accessibility';
 
 class Collapse extends React.Component {
     constructor(props) {
@@ -43,7 +49,7 @@ class Collapse extends React.Component {
 
 const HandInfo = () => {
 
-  const [hand,setHand] = useState([]);
+  const [handInfos,setHandInfos] = useState([]);
   const [query, setQuery] = useState("")
 
   //url 설정
@@ -67,17 +73,13 @@ const HandInfo = () => {
   };
   
   useEffect(()=>{
-    
-    const hands = axios.get(url, config)
-    .then((Response)=>{
-      console.log(Response.data)
-      setHand(Response.data)
-      return Response.data
+    axios.get(url, config)
+      .then((Response)=>{
+        console.log(Response.data)
+        setHandInfos(Response.data)
     })
     .catch((Error)=>{console.log(Error)})
   },[]);
-
-  const handInfos = hand;
 
   const handList = 
     handInfos.filter(handInfo => {
@@ -88,14 +90,30 @@ const HandInfo = () => {
         return handInfo;
       }
     }).map((handInfo) => (
-       <div style={{width:"70%",marginLeft: "auto", marginRight:"auto"}}>
-        <Collapse title={handInfo.meaning}>
-          <div style={{background: "white", marignTop: "-1%", padding: "1%", borderRadius: "4px",}}>
-            <div style={{color: "black", fontSize: "1.5vw"}}>{handInfo.shape}</div>
-            <img src={`./hand/${handInfo.image}.jpg`} style={{height: "20vw"}}/>
-          </div>
-        </Collapse>
-      </div>
+      <Accordion style={{margin:"1%", borderRadius:"2px", background:"#9fa8da"}}>
+        <AccordionSummary
+          expandIcon={<ExpandMoreIcon />}
+          aria-controls="panel1a-content"
+        >
+          <Typography style={{fontSize:"2vw"}}>{handInfo.meaning}</Typography>
+        </AccordionSummary>
+        <AccordionDetails
+          style={{background:"white"}}
+          >
+          <Typography style={{fontSize:"1.5vw"}}>
+            {handInfo.shape}
+          </Typography>
+          <img src={`./hand/${handInfo.image}.jpg`} style={{height: "20vw"}}/>
+        </AccordionDetails>
+      </Accordion>
+      //  <div style={{width:"70%",marginLeft: "auto", marginRight:"auto"}}>
+      //   <Collapse title={handInfo.meaning}>
+      //     <div style={{background: "white", marignTop: "-1%", padding: "1%", borderRadius: "4px",}}>
+      //       <div style={{color: "black", fontSize: "1.5vw"}}>{handInfo.shape}</div>
+      //       <img src={`./hand/${handInfo.image}.jpg`} style={{height: "20vw"}}/>
+      //     </div>
+      //   </Collapse>
+      // </div>
   ));
 
   const classes = useStyles();
@@ -103,7 +121,7 @@ const HandInfo = () => {
   return(
       <div className={classes.root}>
           지원 수어 살펴보기
-          <div style={{width: "90%", marginTop: "3%", marginLeft: "5%",}}>
+          <div style={{width: "80%", marginTop: "3%", marginLeft: "10%",}}>
             <input placeholder="검색" onChange={event => setQuery(event.target.value)} /> 
             {handList}
           </div>

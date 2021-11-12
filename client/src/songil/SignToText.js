@@ -80,7 +80,7 @@ function SignToText({setCaption}) {
       
       // Draw mesh
       try{
-        const ctx = canvasRef.current.getContext("2d");
+        // const ctx = canvasRef.current.getContext("2d");
         
         CurrentValue = getText(classes[0], scores[0], 0.8)
 

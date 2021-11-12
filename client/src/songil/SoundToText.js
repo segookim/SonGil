@@ -1,23 +1,42 @@
 // Import dependencies
 import React from "react";
+import { useState } from "react";
 import '../css/bootstrap.min.css';
-// import '../bootstrap.min.css';
-// 2. TODO - Import drawing utility here
-// e.g. import { drawRect } from "./utilities";
+
+import { makeStyles } from "@material-ui/core";
 import Button from '@material-ui/core/Button';
-import MicIcon from '@material-ui/icons/Mic';
-import PlayCircleFilledWhiteIcon from '@material-ui/icons/PlayCircleFilledWhite';
+import PlayArrowIcon from '@material-ui/icons/PlayArrow';
 import StopIcon from '@material-ui/icons/Stop';
-import RotateLeftIcon from '@material-ui/icons/RotateLeft';
 
 /**
  * Class to handle the rendering of the Home page.
  * @extends React.Component
  */
 
+const useStyles = makeStyles((theme) => ({
+  icon: {
+    fontSize: "7vw",
+  },
+}));
 
 function SoundToText({startHandle, stopHandle,resetTranscript,transcript,listening, setText}) {
-  //SoundToText
+  const classes = useStyles();
+  const [icon, setIcon] = useState(<PlayArrowIcon className={classes.icon}/>);
+  const [buttonVariant, setButtonVariant] = useState('outlined');
+  // const [buttonColor, setButtonColor] = useState('white');
+
+  const onClick = () => {
+    if ( listening ){
+      stopHandle();
+      setIcon(<PlayArrowIcon className={classes.icon}/>);
+      setButtonVariant('outlined');
+    } else {
+      startHandle();
+      setIcon(<StopIcon className={classes.icon} style={{color: "#272B30"}}/>);
+      setButtonVariant('contained');
+    }
+  }
+
   return (
     <div style={{
       marginTop: "1%",
@@ -27,23 +46,19 @@ function SoundToText({startHandle, stopHandle,resetTranscript,transcript,listeni
     }}>
       음성 인식
       <div style={{
-        fontSize: "80%",
+        marginTop: "15%",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center"
       }}>
-        <MicIcon style={{
-          // transform:"scale(1.5)",
-          marginRight: "2%"
-        }}/>
-        {listening ? 'on' : 'off'}
+        <Button variant={buttonVariant} color="inherit" onClick={onClick} style={{
+          borderRadius:"100%",
+          width: "15vw",
+          height: "15vw",
+        }}>
+          {icon}
+        </Button>
       </div>
-      <Button variant="outlined" color="inherit" onClick={startHandle} style={{
-        // transform:"scale(1.5)",
-        marginRight: "2%",
-        marginLeft: "2%",
-      }}><PlayCircleFilledWhiteIcon/></Button>
-      <Button variant="outlined" color="inherit" onClick={stopHandle}style={{
-        // transform:"scale(1.5)",
-        marginLeft: "5%",
-      }}><StopIcon/></Button>
     </div>
   );
 }
