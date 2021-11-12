@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import "./fonts/font.css";
 
 //material-ui
 import { Container } from '@material-ui/core';
@@ -33,7 +34,7 @@ class App extends Component {
 
   render() {
     return (
-        <div className="App">
+        <div style={{fontFamily: "NanumBarunGothic"}}>
           <Navbar />
           <Container  maxWidth="false" style={{ padding:"1%", paddingTop:"2%"}}>
             <Routes />

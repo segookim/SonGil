@@ -9,6 +9,7 @@ const useStyles = makeStyles(() => ({
         marginTop: "20%",
         marginLeft: "auto",
         marginRight: "auto",
+        paddingBottom: "10%",
         left: 0,
         right: 0,
         textAlign: "center",

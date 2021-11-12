@@ -14,7 +14,11 @@ import SpeechRecognition, { useSpeechRecognition } from 'react-speech-recognitio
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
-    backgroundColor: "#444444"
+    backgroundColor: "#eeeeee",
+
+    "&.MuiButton-root": {
+      backgroundColor: "#90caf9"
+    },
   },
 }));
 
@@ -87,7 +91,7 @@ function Home() {
                   수어 인식 결과
                     <Button variant="contained" color="primary" onClick={()=>reset()}
                      style = {{
-                      fontSize: "70%",
+                      fontSize: "2.4vw",
                     }}
                     >
                       결과 초기화
@@ -95,13 +99,14 @@ function Home() {
                 </div>
 
                 <div style={{
+                  borderRadius: "4px",
                   marginTop: "1%",
                   padding:"1%",
-                  // height:"468px",
-                  height: "30vw",
+                  height:"198px",
+                  fontSize: "2.4vw",
                   overflowY:"scroll",
-                  fontSize: "80%",
                   backgroundColor: "white",
+                  height: "30vw"
                 }}>
                   {Caption}
                 </div>
@@ -133,8 +138,8 @@ function Home() {
                 }}>
                   음성 인식 결과
                   <Button variant="contained" color="primary" onClick={()=>resetTranscript()}
-                     style = {{
-                      fontSize: "70%",
+                    style = {{
+                      fontSize: "2.4vw",
                     }}
                     >
                     결과 초기화
@@ -145,11 +150,10 @@ function Home() {
                   marginTop: "1%",
                   padding:"1%",
                   height:"198px",
-                  fontSize: "80%",
+                  fontSize: "2.4vw",
                   overflowY:"scroll",
                   backgroundColor: "white",
                   height: "30vw"
-                  
                 }}>
                   {transcript}
                 </div>

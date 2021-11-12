@@ -11,7 +11,7 @@ const useStyles = makeStyles(() => ({
         fontSize: "3vw",
     },
     a:{
-        width: "90vw",
+        width: "80vw",
         marginTop: 40
     },
 }));

@@ -46,11 +46,18 @@ function SoundToText({startHandle, stopHandle,resetTranscript,transcript,listeni
     }}>
       음성 인식
       <div style={{
-        marginTop: "15%",
+        marginTop: "05%",
         display: "flex",
         justifyContent: "center",
-        alignItems: "center"
+        alignItems: "center",
+        flexDirection: "column"
       }}>
+        <div style={{
+          fontSize: "2.4vw",
+          marginBottom: "3%"
+        }}>
+          {listening ?  '음성 인식 중입니다.' : '음성 인식이 중지되었습니다.'}
+        </div>
         <Button variant={buttonVariant} color="inherit" onClick={onClick} style={{
           borderRadius:"100%",
           width: "15vw",

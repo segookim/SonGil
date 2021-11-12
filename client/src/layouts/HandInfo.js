@@ -1,56 +1,20 @@
 import React, {useEffect, useState} from "react";
 import { makeStyles } from '@material-ui/core/styles';
 import axios from 'axios'
+
 import Accordion from '@mui/material/Accordion';
 import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';
 import Typography from '@mui/material/Typography';
-// import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-// import AccessibilityIcon from '@mui/icons-material/Accessibility';
 
-class Collapse extends React.Component {
-    constructor(props) {
-      super(props);
-      this.state = {
-        show: false
-      };
-      
-    }
-    render() {
-      const { title, children } = this.props;
-      const { show } = this.state;
-      return (
-        <div style={{margin: "1%"}}>
-          <header
-            style={{
-              fontSize: "1.8vw",
-              borderRadius: "4px",
-              padding: "0.5%",
-              backgroundColor: "#8792D5",
-              color: "black",
-              userSelect: "none",
-              cursor: "pointer",
-              height: "100%",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-            }}
-            onClick={e => this.setState(prevState => ({ show: !prevState.show }))}
-          >
-            {title}
-          </header>
-          {show && children}
-        </div>
-      );
-    }
-  }
+import "../fonts/font.css";
 
 
 const HandInfo = () => {
-
   const [handInfos,setHandInfos] = useState([]);
-  const [query, setQuery] = useState("")
+  const [query, setQuery] = useState("");
+  const [active, setActive] = useState("Active");
 
   //url 설정
   let url ='http://localhost:5000/api/hand'
@@ -58,13 +22,29 @@ const HandInfo = () => {
     url ='https://songil-project.herokuapp.com/api/hand'
   } 
 
+  const tmp = () => {
+    setActive(active === "" ? "Active" : "");
+    console.log(active);
+  };
+
   const useStyles = makeStyles(() => ({
     root:{
         color: 'white',
         textAlign: 'center',
         fontSize: "3vw"
     },
+    AccordionSummary:{
+      // borderRadius:"2px",
+      // backgroundColor:"#eeeeee",
+      fontFamily: "NanumBarunGothic",
+      "&.Mui-expanded": {
+        fontFamily: "NanumBarunGothic",
+        borderRadius:"4px",
+        backgroundColor: "#90caf9"
+      }
+    },
   }),[]);  
+
 
   const config = {
     headers: {
@@ -81,6 +61,8 @@ const HandInfo = () => {
     .catch((Error)=>{console.log(Error)})
   },[]);
 
+  const classes = useStyles();
+
   const handList = 
     handInfos.filter(handInfo => {
       if (query === '') {
@@ -90,40 +72,35 @@ const HandInfo = () => {
         return handInfo;
       }
     }).map((handInfo) => (
-      <Accordion style={{margin:"1%", borderRadius:"2px", background:"#9fa8da"}}>
+      <Accordion
+        style={{borderRadius:"4px", margin: "1%", background: "#eeeeee"}}
+      >
         <AccordionSummary
           expandIcon={<ExpandMoreIcon />}
-          aria-controls="panel1a-content"
+          className={classes.AccordionSummary}
         >
-          <Typography style={{fontSize:"2vw"}}>{handInfo.meaning}</Typography>
+          <Typography style={{fontSize:"2.1vw", fontFamily: "NanumBarunGothic",}}>{handInfo.meaning}</Typography>
         </AccordionSummary>
         <AccordionDetails
-          style={{background:"white"}}
-          >
-          <Typography style={{fontSize:"1.5vw"}}>
+          style={{background:"white", borderRadius:"4px"}}
+        >
+          <Typography style={{fontSize:"1.5vw", marginBottom: "1%", fontFamily: "NanumBarunGothic",}}>
             {handInfo.shape}
           </Typography>
           <img src={`./hand/${handInfo.image}.jpg`} style={{height: "20vw"}}/>
         </AccordionDetails>
       </Accordion>
-      //  <div style={{width:"70%",marginLeft: "auto", marginRight:"auto"}}>
-      //   <Collapse title={handInfo.meaning}>
-      //     <div style={{background: "white", marignTop: "-1%", padding: "1%", borderRadius: "4px",}}>
-      //       <div style={{color: "black", fontSize: "1.5vw"}}>{handInfo.shape}</div>
-      //       <img src={`./hand/${handInfo.image}.jpg`} style={{height: "20vw"}}/>
-      //     </div>
-      //   </Collapse>
-      // </div>
   ));
 
-  const classes = useStyles();
 
   return(
       <div className={classes.root}>
           지원 수어 살펴보기
-          <div style={{width: "80%", marginTop: "3%", marginLeft: "10%",}}>
+          <div style={{width: "80vw", marginTop: "3%", marginLeft: "auto", marginRight:"auto"}}>
             <input placeholder="검색" onChange={event => setQuery(event.target.value)} /> 
+            <div>
             {handList}
+            </div>
           </div>
       </div>
   );

@@ -13,103 +13,67 @@ import Reactimg from '../images/Reactimg.jpg'
 import Tensorflowimg from '../images/Tensorflowimg.jpg'
 import Ibmcloudimg from '../images/Ibmcloudimg.jpg'
 import Tensorflowjsimg from '../images/Tensorflowjsimg.jpg'
+import { borderRadius } from '@mui/system';
 
 const useStyles = makeStyles(() => ({
   root: {
     color: "white",
-    textAlign: "center"
-  },
-  Motivation: {
-    backgroundColor: "white",
-    position: "1",
-    padding: "2%",
-    marginLeft: "auto",
-    marginRight: "auto",
-    left: 0,
-    right: 0,
     textAlign: "center",
-    width: "90vw",
-    color: "black",
-    marginTop: "1%",
-    marginBottom: "5%"
-    // width: 1200,
-    // height: 200,
+    fontSize: "2.1vw",
   },
-  introduce: {
+
+  Head: {
+    fontSize: "3vw"
+  },
+
+  Content: {
     backgroundColor: "white",
     position: "2",
     marginTop: "1%",
-    padding: "2%",
+    padding: "3%",
     marginLeft: "auto",
     marginRight: "auto",
     left: 0,
     right: 0,
+    width: "80vw",
     textAlign: "center",
-    width: "90vw",
-    marginBottom: "5%"
-    // width: 1200,
-    // height: 800,
+    color: "black",
+    marginBottom: "5%",
+    borderRadius: "4px"
   },
-  technique: {
-    backgroundColor: "white",
-    position: "3",
-    marginTop: "1%",
-    padding: "2%",
-    marginLeft: "auto",
-    marginRight: "auto",
-    left: 0,
-    right: 0,
-    textAlign: "center",
-    width: "90vw",
-    // width: 1200,
-  },
+
   sort: {
     marginTop: "3%",
-    // margin: 20,
-    // marginLeft: 20,
     textAlign: "left",
   },
-  kiwoongkim:{
-    marginTop: 30
+
+  Person:{
+    marginTop: "2vw",
+    marginBottom: "2vw",
   },
-  kiwoongkimimg:{
-    marginLeft: 30,
+
+  PersonImg:{
+    // marginLeft: "4vw",
     float: "left",
-    width: 150,
-    height: 200
+    width: "15vw",
+    height: "20vw",
+    borderRadius: "4px"
   },
-  segookim:{
-    marginTop: 30
-  },
-  segookimimg:{
-    marginLeft: 30,
-    float: "left",
-    width: 150,
-    height: 200
-  },
-  haesungyang:{
-    marginTop: 30
-  },
-  haesungyangimg:{
-    marginLeft: 30,
-    float: "left",
-    width: 150,
-    height: 200
-  },
-  content:{
-    marginLeft: 210,
-    marginRight: 30,
-    padding: 20,
+
+  Description:{
+    marginLeft: "17vw",
+    // marginRight: "4vw",
+    padding: "2vw",
     backgroundColor: "black",
     color: "white",
-    height: 200,
+    height: "20vw",
+    borderRadius: "4px"
   },
-  techimg: {
+
+  TechImg: {
     // width : 200,
-    height: 50,
-    marginTop: 50, 
-    marginLeft: 50,
-    marginRight: 50
+    height: "4vw",
+    margin: "2vw", 
   }
 }));
 
@@ -121,8 +85,8 @@ const About = () => {
     return (
       <div className={classes.root}>
 
-        <h1>개발 동기</h1>
-        <div className={classes.Motivation}>
+        <div className={classes.Head}>개발 동기</div>
+        <div className={classes.Content}>
             <div className={classes.sort}>
               <p>안녕하세요 저희는 '더 나은 세상'이라는 사회적 가치 실현에 중점을 두고있는 개발자들입니다.</p>
               <p>호떡장사를 하시는 농아인분이 손님과의 의사소통에 불편함을 느끼시는 것을 보고, 해당 문제점을 해결하고자 이번 웹앱프로젝트를 준비하게 되었습니다.</p>
@@ -130,11 +94,11 @@ const About = () => {
             </div>
         </div>
 
-        <h1>개발자 소개</h1>
-        <div className={classes.introduce}>
-          <div className={classes.kiwoongkim}>
-            <img className={classes.kiwoongkimimg} src={kiwoongkim} />
-            <div className={classes.content}>
+        <div className={classes.Head}>개발자 소개</div>
+        <div className={classes.Content}>
+          <div className={classes.Person}>
+            <img className={classes.PersonImg} src={kiwoongkim} />
+            <div className={classes.Description}>
               <span className={classes.sort}>
                 <p>- Name : 김기웅</p>
                 <p>- Email : rldnd2637@gmail.com</p>
@@ -143,9 +107,9 @@ const About = () => {
             </div>
           </div>
 
-          <div className={classes.segookim}>
-            <img className={classes.segookimimg} src={segookim} />
-            <div className={classes.content}>
+          <div className={classes.Person}>
+            <img className={classes.PersonImg} src={segookim} />
+            <div className={classes.Description}>
               <span className={classes.sort}>
                 <p>- Name : 김세구</p>
                 <p>- Email : kuialvre1@gmail.com</p>
@@ -154,9 +118,9 @@ const About = () => {
             </div>
           </div>
 
-          <div className={classes.haesungyang}>
-            <img className={classes.haesungyangimg} src={haesungyang} />
-            <div className={classes.content}>
+          <div className={classes.Person}>
+            <img className={classes.PersonImg} src={haesungyang} />
+            <div className={classes.Description}>
               <span className={classes.sort}>
                 <p>- Name : 양해성</p>
                 <p>- Email : yanghs632@gmail.com</p>
@@ -166,12 +130,12 @@ const About = () => {
           </div>
         </div>
 
-        <h1>사용 기술</h1>
-        <div className={classes.technique}>
-          <img className={classes.techimg} src={Reactimg} />
-          <img className={classes.techimg} src={Tensorflowimg} />
-          <img className={classes.techimg} src={Tensorflowjsimg} />
-          <img className={classes.techimg} src={Ibmcloudimg} />
+        <div className={classes.Head}>사용 기술</div>
+        <div className={classes.Content}>
+          <img className={classes.TechImg} src={Reactimg} />
+          <img className={classes.TechImg} src={Tensorflowimg} />
+          <img className={classes.TechImg} src={Tensorflowjsimg} />
+          <img className={classes.TechImg} src={Ibmcloudimg} />
         </div>
 
       </div>
