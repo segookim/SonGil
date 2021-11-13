@@ -38,7 +38,12 @@ function Home() {
       transcript,
       listening,
       resetTranscript,
+      browserSupportsSpeechRecognition
     } = useSpeechRecognition();
+  
+    if (!browserSupportsSpeechRecognition) {
+      return <span>Browser doesn't support speech recognition.</span>;
+    }
   
     const startHandle = () => {
       SpeechRecognition.startListening({language: 'ko', continuous: true});
