@@ -8,7 +8,7 @@ const useStyles = makeStyles(() => ({
     root:{
         color: 'white',
         textAlign: 'center',
-        fontSize: "3vw",
+        fontSize: "2vw",
     },
     a:{
         width: "80vw",

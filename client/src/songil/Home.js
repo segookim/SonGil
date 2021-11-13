@@ -7,6 +7,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import SignToText from './SignToText'
 import SoundToText from './SoundToText'
+import DynamicSignToText from './DynamicSignToText'
 
 import SpeechRecognition, { useSpeechRecognition } from 'react-speech-recognition';
 
@@ -69,18 +70,31 @@ function Home() {
             <div style={{
               color: "white",
               width:"48%",
-              fontSize: "3vw",
+              fontSize: "2vw",
             }}>
               수어 인식
               <SignToText setCaption  = {setCaption}/>
+              {/* <DynamicSignToText/> */}
             </div>
+
+            <SoundToText 
+              startHandle={startHandle} stopHandle={stopHandle} resetTranscript={resetTranscript} transcript={transcript} listening={listening} setTextsetText = {setText} />
+
+          </div>
+
+          <div style = {{
+            marginTop:"1%",
+            display:"flex",
+            width: "100%",
+            }
+          }>
+            
 
             <div
               style = {{
-                marginLeft: "4%",
                 width: "48%",
                 color: "black",
-                fontSize : "3vw",
+                fontSize: "2vw",
                 }
               }>
                 <div style={{
@@ -91,7 +105,7 @@ function Home() {
                   수어 인식 결과
                     <Button variant="contained" color="primary" onClick={()=>reset()}
                      style = {{
-                      fontSize: "2.4vw",
+                      fontSize: "1vw",
                     }}
                     >
                       결과 초기화
@@ -102,33 +116,20 @@ function Home() {
                   borderRadius: "4px",
                   marginTop: "1%",
                   padding:"1%",
-                  height:"198px",
-                  fontSize: "2.4vw",
+                  fontSize: "2vw",
                   overflowY:"scroll",
                   backgroundColor: "white",
-                  height: "30vw"
+                  height: "12vw"
                 }}>
                   {Caption}
                 </div>
             </div>
-          </div>
-
-          <div style = {{
-            marginTop:"5%",
-            display:"flex",
-            width: "100%",
-            }
-          }>
-            
-            <SoundToText 
-              startHandle={startHandle} stopHandle={stopHandle} resetTranscript={resetTranscript} transcript={transcript} listening={listening} setTextsetText = {setText} />
-
+           
             <div style={{
                 marginLeft: "4%",
                 width: "48%",
                 color: "black", 
-                fontSize: "3vw",
-                height: "270px"
+                fontSize: "2vw",
               }}
               >
                 <div style={{
@@ -139,7 +140,7 @@ function Home() {
                   음성 인식 결과
                   <Button variant="contained" color="primary" onClick={()=>resetTranscript()}
                     style = {{
-                      fontSize: "2.4vw",
+                      fontSize: "1vw",
                     }}
                     >
                     결과 초기화
@@ -149,11 +150,10 @@ function Home() {
                   borderRadius: "4px",
                   marginTop: "1%",
                   padding:"1%",
-                  height:"198px",
-                  fontSize: "2.4vw",
+                  fontSize: "2vw",
                   overflowY:"scroll",
                   backgroundColor: "white",
-                  height: "30vw"
+                  height: "12vw"
                 }}>
                   {transcript}
                 </div>

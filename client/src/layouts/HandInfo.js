@@ -31,7 +31,7 @@ const HandInfo = () => {
     root:{
         color: 'white',
         textAlign: 'center',
-        fontSize: "3vw"
+        fontSize: "2vw"
     },
     AccordionSummary:{
       // borderRadius:"2px",
@@ -79,7 +79,7 @@ const HandInfo = () => {
           expandIcon={<ExpandMoreIcon />}
           className={classes.AccordionSummary}
         >
-          <Typography style={{fontSize:"2.1vw", fontFamily: "NanumBarunGothic",}}>{handInfo.meaning}</Typography>
+          <Typography style={{fontSize:"1.8vw", fontFamily: "NanumBarunGothic",}}>{handInfo.meaning}</Typography>
         </AccordionSummary>
         <AccordionDetails
           style={{background:"white", borderRadius:"4px"}}

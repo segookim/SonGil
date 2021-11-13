@@ -19,11 +19,11 @@ const useStyles = makeStyles(() => ({
   root: {
     color: "white",
     textAlign: "center",
-    fontSize: "2.1vw",
+    fontSize: "1.8vw",
   },
 
   Head: {
-    fontSize: "3vw"
+    fontSize: "2vw"
   },
 
   Content: {
