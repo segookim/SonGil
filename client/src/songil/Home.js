@@ -7,7 +7,6 @@ import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import SignToText from './SignToText'
 import SoundToText from './SoundToText'
-import DynamicSignToText from './DynamicSignToText'
 
 import SpeechRecognition, { useSpeechRecognition } from 'react-speech-recognition';
 
