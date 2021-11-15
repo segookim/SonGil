@@ -83,7 +83,7 @@ function SignToText({ setMessages }) {
 
             setMessages((messages) => [
               ...messages,
-              { body: "sign:" + CurrentValue, isSign: true },
+              { body: "수어:" + CurrentValue, isSign: true },
             ]);
 
             BeforeValue = CurrentValue;
