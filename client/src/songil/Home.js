@@ -20,7 +20,7 @@ function Home() {
 
     setMessages((messages) => [
       ...messages,
-      { body: "sound:" + transcript, isSign: false },
+      { body: ":" + transcript, isSign: false },
     ]);
     resetTranscript();
   };
@@ -84,7 +84,7 @@ function Home() {
                 borderBottom: "1px solid #ddd",
               }}
             >
-              result
+              인식결과
             </div>
             <div
               style={{
