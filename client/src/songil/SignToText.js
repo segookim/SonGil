@@ -107,7 +107,6 @@ function SignToText({ setMessages }) {
   }, []);
 
   return (
-    <div style={{}}>
       <Webcam
         ref={webcamRef}
         muted={true}
@@ -120,7 +119,6 @@ function SignToText({ setMessages }) {
           height: "45vh",
         }}
       />
-    </div>
   );
 }
 
