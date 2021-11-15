@@ -7,6 +7,8 @@ const useStyles = makeStyles(() => ({
     position: "absolute",
     marginLeft: "auto",
     marginRight: "auto",
+    paddingTop: "2%",
+    paddingBottom: "1%",
     left: 0,
     right: 0,
     textAlign: "center",

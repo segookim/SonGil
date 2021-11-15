@@ -7,7 +7,7 @@ import StopIcon from "@material-ui/icons/Stop";
 
 const useStyles = makeStyles((theme) => ({
   icon: {
-    fontSize: "7vw",
+    fontSize: "6vw",
   },
 }));
 
@@ -33,18 +33,19 @@ function SoundToText({ startHandle, stopHandle, listening }) {
   return (
     <div
       style={{
-        marginLeft: "25%",
         color: "white",
-        width: "48%",
         fontSize: "2vw",
+        marginTop: "2%",
       }}
     >
       <div
         style={{
           display: "flex",
-          justifyContent: "center",
           alignItems: "center",
-          flexDirection: "column",
+          justifyContent: "center"
+          // justifyContent: "center",
+          // alignItems: "center",
+          // flexDirection: "column",
         }}
       >
         <Button
@@ -52,9 +53,9 @@ function SoundToText({ startHandle, stopHandle, listening }) {
           color="inherit"
           onClick={onClick}
           style={{
-            borderRadius: "100%",
-            width: "12vw",
-            height: "12vw",
+            borderRadius: "4px",
+            width: "8vw",
+            height: "8vw",
           }}
         >
           {icon}
@@ -62,7 +63,8 @@ function SoundToText({ startHandle, stopHandle, listening }) {
         <div
           style={{
             fontSize: "1.8vw",
-            marginTop: "2%",
+            marginLeft: "5%",
+            width: "21vw"
           }}
         >
           {listening ? "음성 인식 중입니다." : "음성 인식이 중지되었습니다."}

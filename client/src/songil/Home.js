@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState, useRef, Component } from "react";
 import SignToText from "./SignToText";
 import SoundToText from "./SoundToText";
 import SpeechRecognition, {
@@ -39,61 +39,55 @@ function Home() {
   return (
     <>
       <div style={{ display: "flex" }}>
-        <div style={{ width: "45vw" }}>
+        <div style={{ width: "48vw", paddingRight: "1vw" }}>
           <div
-            style={{
-              width: "100%",
-              height: "50vh",
-            }}
-          >
+              style={{
+                textAlign: "center",
+                color: "white",
+                lineHeight: "5vh",
+                fontSize: "2vw",
+              }}
+            >
+              수어 및 음성인식
+          </div>
+          <div>
             <SignToText setMessages={setMessages} />
           </div>
-          <div
-            style={{
-              width: "100%",
-            }}
-          >
-            <SoundToText
-              startHandle={startHandle}
-              stopHandle={stopHandle}
-              listening={listening}
-              setMessages={setMessages}
-            />
-          </div>
+          <SoundToText
+            startHandle={startHandle}
+            stopHandle={stopHandle}
+            listening={listening}
+            setMessages={setMessages}
+          />
         </div>
         <div
           style={{
             color: "black",
-            width: "48%",
-            fontSize: "3vw",
+            width: "45vw",
+            fontSize: "2vw",
           }}
         >
           <div
-            style={{
-              width: "45vw",
-              border: "1px solid #ddd",
-              backgroundColor: "white",
-            }}
           >
             <div
               style={{
                 textAlign: "center",
+                color: "white",
                 lineHeight: "5vh",
                 fontSize: "2vw",
-                fontWeight: "700",
-                borderBottom: "1px solid #ddd",
               }}
             >
               인식결과
             </div>
             <div
               style={{
-                overflow: "scroll",
-                width: "45vw",
-                height: "60vh",
-              }}
+                overflowY: "scroll",
+                height: "55vh",
+                backgroundColor: "white",
+                borderRadius: "4px"
+            }}
             >
-              <div>
+              <div style={{padding: "1%"}}>
                 {messages.map((message, i) =>
                   message.isSign ? (
                     <div key={i} style={{ textAlign: "left" }}>
@@ -114,10 +108,9 @@ function Home() {
             color="primary"
             onClick={() => reset()}
             style={{
-              fontSize: "2vw",
+              fontSize: "1.8vw",
               float: "right",
               marginTop: "1%",
-              marginRight: "4%",
             }}
           >
             결과 초기화

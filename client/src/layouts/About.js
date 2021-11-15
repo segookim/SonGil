@@ -33,6 +33,7 @@ const useStyles = makeStyles(() => ({
     textAlign: "center",
     color: "black",
     marginBottom: "5%",
+    borderRadius: "4px",
   },
 
   sort: {
