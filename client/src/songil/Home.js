@@ -20,7 +20,7 @@ function Home() {
 
     setMessages((messages) => [
       ...messages,
-      { body: ":" + transcript, isSign: false },
+      { body: "음성:" + transcript, isSign: false },
     ]);
     resetTranscript();
   };
