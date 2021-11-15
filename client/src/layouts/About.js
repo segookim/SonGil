@@ -56,7 +56,7 @@ const useStyles = makeStyles(() => ({
   Description: {
     marginLeft: "17vw",
     padding: "2vw",
-    backgroundColor: "black",
+    backgroundColor: "#818b98",
     color: "white",
     height: "20vw",
     borderRadius: "4px",
