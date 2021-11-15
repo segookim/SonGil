@@ -1,174 +1,131 @@
-// // Import dependencies
-
-import React, { useEffect, useState } from 'react';
-
-import { makeStyles } from '@material-ui/core/styles';
-
-import Button from '@material-ui/core/Button';
-import SignToText from './SignToText'
-import SoundToText from './SoundToText'
-
-import SpeechRecognition, { useSpeechRecognition } from 'react-speech-recognition';
-
-
-const useStyles = makeStyles((theme) => ({
-  root: {
-    flexGrow: 1,
-    backgroundColor: "#eeeeee",
-
-    "&.MuiButton-root": {
-      backgroundColor: "#90caf9"
-    },
-  },
-}));
-
-
+import React, { useEffect, useState, useRef } from "react";
+import SignToText from "./SignToText";
+import SoundToText from "./SoundToText";
+import SpeechRecognition, {
+  useSpeechRecognition,
+} from "react-speech-recognition";
+import Button from "@material-ui/core/Button";
 function Home() {
-  const classes = useStyles();
-  const [value, setValue] = React.useState(0);
-  const [Caption, setCaption] = useState(['']);
-  const [Text, setText] = useState(['']);
+  const [messages, setMessages] = useState([]);
+  const messagesEndRef = useRef();
 
-  const handleChange = (event, newValue) => {
-    setValue(newValue);
+  //SoundToText
+  const { transcript, listening, resetTranscript } = useSpeechRecognition();
+  const startHandle = () => {
+    resetTranscript();
+    SpeechRecognition.startListening({ language: "ko", continuous: true });
+  };
+  const stopHandle = () => {
+    SpeechRecognition.stopListening();
+
+    setMessages((messages) => [
+      ...messages,
+      { body: "sound:" + transcript, isSign: false },
+    ]);
+    resetTranscript();
   };
 
-    //SoundToText
-    const {
-      transcript,
-      listening,
-      resetTranscript,
-      browserSupportsSpeechRecognition
-    } = useSpeechRecognition();
-  
-    if (!browserSupportsSpeechRecognition) {
-      return <span>Browser doesn't support speech recognition.</span>;
-    }
-  
-    const startHandle = () => {
-      SpeechRecognition.startListening({language: 'ko', continuous: true});
-    };
-    
-    const stopHandle = async () => {
-      SpeechRecognition.stopListening();
-    };
-
   function reset() {
-    setCaption(['']);
-    resetTranscript();
+    setMessages([]);
   }
 
+  const scrollToBottom = () => {
+    messagesEndRef.current.scrollIntoView({ behavior: "smooth" });
+  };
+  useEffect(() => {
+    scrollToBottom();
+  }, [messages]);
 
   return (
-
-      <>
-       <div style = {{
-          }
-        }>
-
-          <div style = {{
-             display:"flex",
-             height: "20%",
-          }
-          }>
-            <div style={{
-              color: "white",
-              width:"48%",
-              fontSize: "2vw",
-            }}>
-              수어 인식
-              <SignToText setCaption  = {setCaption}/>
-              {/* <DynamicSignToText/> */}
-            </div>
-
-            <SoundToText 
-              startHandle={startHandle} stopHandle={stopHandle} resetTranscript={resetTranscript} transcript={transcript} listening={listening} setTextsetText = {setText} />
-
+    <>
+      <div style={{ display: "flex" }}>
+        <div style={{ width: "45vw" }}>
+          <div
+            style={{
+              width: "100%",
+              height: "50vh",
+            }}
+          >
+            <SignToText setMessages={setMessages} />
           </div>
-
-          <div style = {{
-            marginTop:"1%",
-            display:"flex",
-            width: "100%",
-            }
-          }>
-            
-
-            <div
-              style = {{
-                width: "48%",
-                color: "black",
-                fontSize: "2vw",
-                }
-              }>
-                <div style={{
-                  display: "flex",
-                  justifyContent: "space-between",
-                  color:"white"
-                }}>
-                  수어 인식 결과
-                    <Button variant="contained" color="primary" onClick={()=>reset()}
-                     style = {{
-                      fontSize: "1vw",
-                    }}
-                    >
-                      결과 초기화
-                    </Button>
-                </div>
-
-                <div style={{
-                  borderRadius: "4px",
-                  marginTop: "1%",
-                  padding:"1%",
-                  fontSize: "2vw",
-                  overflowY:"scroll",
-                  backgroundColor: "white",
-                  height: "12vw"
-                }}>
-                  {Caption}
-                </div>
-            </div>
-           
-            <div style={{
-                marginLeft: "4%",
-                width: "48%",
-                color: "black", 
-                fontSize: "2vw",
-              }}
-              >
-                <div style={{
-                  display: "flex",
-                  justifyContent: "space-between",
-                  color: "white"
-                }}>
-                  음성 인식 결과
-                  <Button variant="contained" color="primary" onClick={()=>resetTranscript()}
-                    style = {{
-                      fontSize: "1vw",
-                    }}
-                    >
-                    결과 초기화
-                    </Button>
-                </div>
-                <div style={{
-                  borderRadius: "4px",
-                  marginTop: "1%",
-                  padding:"1%",
-                  fontSize: "2vw",
-                  overflowY:"scroll",
-                  backgroundColor: "white",
-                  height: "12vw"
-                }}>
-                  {transcript}
-                </div>
-            </div>
-
+          <div
+            style={{
+              width: "100%",
+            }}
+          >
+            <SoundToText
+              startHandle={startHandle}
+              stopHandle={stopHandle}
+              listening={listening}
+              setMessages={setMessages}
+            />
           </div>
-
         </div>
+        <div
+          style={{
+            color: "black",
+            width: "48%",
+            fontSize: "3vw",
+          }}
+        >
+          <div
+            style={{
+              width: "45vw",
+              border: "1px solid #ddd",
+              backgroundColor: "white",
+            }}
+          >
+            <div
+              style={{
+                textAlign: "center",
+                lineHeight: "5vh",
+                fontSize: "2vw",
+                fontWeight: "700",
+                borderBottom: "1px solid #ddd",
+              }}
+            >
+              result
+            </div>
+            <div
+              style={{
+                overflow: "scroll",
+                width: "45vw",
+                height: "60vh",
+              }}
+            >
+              <div>
+                {messages.map((message, i) =>
+                  message.isSign ? (
+                    <div key={i} style={{ textAlign: "left" }}>
+                      {message.body}
+                    </div>
+                  ) : (
+                    <div key={i} style={{ textAlign: "right", color: "blue" }}>
+                      {message.body}
+                    </div>
+                  )
+                )}
+                <div ref={messagesEndRef} />
+              </div>
+            </div>
+          </div>
+          <Button
+            variant="contained"
+            color="primary"
+            onClick={() => reset()}
+            style={{
+              fontSize: "2vw",
+              float: "right",
+              marginTop: "1%",
+              marginRight: "4%",
+            }}
+          >
+            결과 초기화
+          </Button>
+        </div>
+      </div>
     </>
   );
 }
-
 
 export default Home;

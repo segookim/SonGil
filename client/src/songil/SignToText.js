@@ -1,48 +1,44 @@
 // Import dependencies
-import React, { useRef,useState, useEffect } from "react";
+import React, { useRef, useEffect } from "react";
 import * as tf from "@tensorflow/tfjs";
 import Webcam from "react-webcam";
-import '../css/bootstrap.min.css';
 
 import { getText } from "./utilities";
 
-function SignToText({setCaption}) {
+function SignToText({ setMessages }) {
   const webcamRef = useRef(null);
-  const canvasRef = useRef(null);
-  let CurrentValue= ' ';
-  let BeforeValue= '';
+  //const canvasRef = useRef(null);
+  let CurrentValue = " ";
+  let BeforeValue = "";
 
   let net;
-  const model_url ='https://tensorflow-realtimemodel-hskw.s3.jp-tok.cloud-object-storage.appdomain.cloud/model.json'
+  const model_url =
+    "https://tensorflow-realtimemodel-hskw.s3.jp-tok.cloud-object-storage.appdomain.cloud/model.json";
   // Main function
   const runCoco = async () => {
-    // 3. TODO - Load network 
-    if (('indexedDB' in window)) {
+    // 3. TODO - Load network
+    if ("indexedDB" in window) {
       try {
-        net = await tf.loadGraphModel('indexeddb://idb');
-      }
-      // If error here, assume that the object store doesn't exist and 
-      // the model currently isn't saved in IndexedDB.
-      catch (error) {
-        console.log('Not found in IndexedDB. Loading and saving...');
+        net = await tf.loadGraphModel("indexeddb://idb");
+      } catch (error) {
+        // If error here, assume that the object store doesn't exist and
+        // the model currently isn't saved in IndexedDB.
+        console.log("Not found in IndexedDB. Loading and saving...");
         console.log(error);
         net = await tf.loadGraphModel(model_url);
-        await net.save('indexeddb://idb');
+        await net.save("indexeddb://idb");
       }
-    }   
-    else {
-      console.warn('IndexedDB not supported.');
+    } else {
+      console.warn("IndexedDB not supported.");
       net = await tf.loadGraphModel(model_url);
-    } 
-   
-    console.count('detecting object');
+    }
+
+    console.count("detecting object");
     //  Loop and detect hands
     setInterval(() => {
       detect(net);
     }, 500);
   };
-
-  
 
   const detect = async (net) => {
     // Check data is available
@@ -65,53 +61,54 @@ function SignToText({setCaption}) {
       // canvasRef.current.height = videoHeight;
 
       // 4. TODO - Make Detections
-      const img = tf.browser.fromPixels(video)
-      const resized = tf.image.resizeBilinear(img, [640, 480])
-      const casted = resized.cast('int32')
-      const expanded = casted.expandDims(0)
-      const obj = await net.executeAsync(expanded)
-      console.log(obj)
+      const img = tf.browser.fromPixels(video);
+      const resized = tf.image.resizeBilinear(img, [640, 480]);
+      const casted = resized.cast("int32");
+      const expanded = casted.expandDims(0);
+      const obj = await net.executeAsync(expanded);
+      console.log(obj);
 
-      const boxes = await obj[1].array()
-      const classes = await obj[2].array()
-      const scores = await obj[4].array()
+      //const boxes = await obj[1].array();
+      const classes = await obj[2].array();
+      const scores = await obj[4].array();
 
-
-      
       // Draw mesh
-      try{
-        // const ctx = canvasRef.current.getContext("2d");
-        
-        CurrentValue = getText(classes[0], scores[0], 0.8)
+      try {
+        //const ctx = canvasRef.current.getContext("2d");
 
-        if (CurrentValue !== BeforeValue){
-            setCaption(Caption => [...Caption, CurrentValue]);
+        CurrentValue = getText(classes[0], scores[0], 0.8);
+        if (CurrentValue !== undefined) {
+          if (CurrentValue !== BeforeValue) {
+            //setCaption((Caption) => [...Caption, CurrentValue]);
+
+            setMessages((messages) => [
+              ...messages,
+              { body: "sign:" + CurrentValue, isSign: true },
+            ]);
+
             BeforeValue = CurrentValue;
-            //requestAnimationFrame(()=> {drawRect(boxes[0], classes[0], scores[0], 0.8, videoWidth, videoHeight, ctx)})    
+            //requestAnimationFrame(()=> {drawRect(boxes[0], classes[0], scores[0], 0.8, videoWidth, videoHeight, ctx)})
+          }
         }
-        
-      }catch(err){
-        console.log(err)
+      } catch (err) {
+        console.log(err);
       }
-      
-        tf.dispose(img)
-        tf.dispose(resized)
-        tf.dispose(casted)
-        tf.dispose(expanded)
-        tf.dispose(obj)  
 
+      tf.dispose(img);
+      tf.dispose(resized);
+      tf.dispose(casted);
+      tf.dispose(expanded);
+      tf.dispose(obj);
     }
   };
 
-  useEffect(()=>{runCoco()},[]);
+  useEffect(() => {
+    runCoco();
+  }, []);
 
   return (
-    <div
-      style={{
-        // marginTop: "4%"
-      }}
-    >
-        <Webcam
+    <div style={{}}>
+      <Webcam
         ref={webcamRef}
         muted={true}
         forceScreenshotSourceSize="true"
@@ -120,12 +117,11 @@ function SignToText({setCaption}) {
           marginRight: "auto",
           zindex: 9,
           width: "100%",
-          height: "26vw"
+          height: "26vw",
         }}
-        />
+      />
     </div>
   );
 }
-
 
 export default SignToText;
